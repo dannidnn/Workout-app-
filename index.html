@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FORGE — 6 Month Cut Programme</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0a1428">
+<meta name="description" content="26-week beginner cut & muscle-build programme with XP, ranks, and daily back builder.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FORGE">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" href="./icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060a14;--bg2:#0a1428;
+  --surface:rgba(255,255,255,.045);--card:rgba(255,255,255,.055);
+  --border:rgba(255,255,255,.10);--borderlight:rgba(120,180,255,.25);
+  --accent:#4da8ff;--accent2:#7ecbff;--electric:#3b82f6;
+  --danger:#ff5c7a;--gold:#ffd166;--text:#eef4ff;--muted:#8b9bbf;--xp:rgba(255,255,255,.06);
+  --glow:0 8px 32px rgba(59,130,246,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:
+    radial-gradient(circle at 15% 0%,rgba(77,168,255,.16),transparent 45%),
+    radial-gradient(circle at 85% 20%,rgba(59,130,246,.14),transparent 50%),
+    radial-gradient(circle at 50% 100%,rgba(126,203,255,.10),transparent 55%),
+    linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+  color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden;
+}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(126,203,255,.05) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;z-index:0;}
+.app{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:14px;}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:18px;}
+.logo{font-family:'Black Ops One';font-size:2.1rem;letter-spacing:1px;color:var(--text);text-transform:uppercase;text-shadow:0 0 24px rgba(77,168,255,.55);}
+.logo span{font-size:.6rem;display:block;color:var(--accent2);letter-spacing:4px;font-family:'Share Tech Mono';margin-top:2px;font-weight:700;}
+.pc{
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--borderlight);border-radius:22px;padding:20px;margin-bottom:18px;
+  position:relative;box-shadow:var(--glow),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.pt{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
+.av{
+  width:58px;height:58px;border-radius:18px;
+  background:linear-gradient(145deg,var(--accent),var(--electric));
+  border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;flex-shrink:0;box-shadow:0 6px 20px rgba(77,168,255,.45);
+}
+.pi h2{font-family:'Black Ops One';font-size:1.1rem;letter-spacing:.5px;color:var(--text);text-transform:uppercase;}
+.pi p{font-family:'Share Tech Mono';font-size:.68rem;color:var(--accent2);margin-top:3px;font-weight:700;}
+.lb{
+  margin-left:auto;background:linear-gradient(160deg,rgba(255,209,102,.22),rgba(255,209,102,.06));
+  border:1px solid rgba(255,209,102,.45);border-radius:14px;padding:7px 16px;text-align:center;
+  box-shadow:0 4px 16px rgba(255,209,102,.2);
+}
+.lb .ln{font-family:'Black Ops One';font-size:1.6rem;color:var(--gold);line-height:1;}
+.lb .ll{font-family:'Share Tech Mono';font-size:.55rem;color:var(--gold);letter-spacing:2px;font-weight:700;}
+.xl{display:flex;justify-content:space-between;margin-bottom:6px;}
+.xl span{font-family:'Share Tech Mono';font-size:.7rem;color:var(--muted);font-weight:700;}
+.xl strong{color:var(--accent2);}
+.xbw{background:var(--xp);border:1px solid var(--border);border-radius:99px;height:12px;overflow:hidden;}
+.xbf{height:100%;background:linear-gradient(90deg,var(--electric),var(--accent2));transition:width .8s cubic-bezier(.4,0,.2,1);border-radius:99px;box-shadow:0 0 12px rgba(77,168,255,.7);}
+.sr{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.sb{
+  flex:1;min-width:70px;background:rgba(255,255,255,.04);backdrop-filter:blur(10px);
+  border:1px solid var(--border);border-radius:14px;padding:9px 6px;text-align:center;
+}
+.sb .v{font-family:'Black Ops One';font-size:1.25rem;color:var(--accent2);}
+.sb .l{font-family:'Share Tech Mono';font-size:.56rem;color:var(--muted);letter-spacing:1px;margin-top:2px;font-weight:700;}
+.phases{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:6px;}
+.ph-btn{
+  flex-shrink:0;padding:7px 14px;border-radius:12px;cursor:pointer;font-family:'Share Tech Mono';
+  font-size:.66rem;letter-spacing:1px;border:1px solid var(--border);background:rgba(255,255,255,.04);
+  color:var(--muted);transition:all .2s;white-space:nowrap;font-weight:700;
+}
+.ph-btn.active{background:linear-gradient(135deg,var(--electric),var(--accent));border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(77,168,255,.4);}
+.tabs{display:flex;gap:6px;margin-bottom:18px;background:transparent;border-radius:0;padding:0;flex-wrap:wrap;}
+.tab{
+  flex:1;min-width:70px;padding:11px 4px;text-align:center;font-family:'Rajdhani';font-weight:800;
+  font-size:.78rem;letter-spacing:.5px;cursor:pointer;border-radius:14px;color:var(--muted);
+  transition:all .2s;border:1px solid var(--border);background:rgba(255,255,255,.04);text-transform:uppercase;
+}
+.tab.active{background:linear-gradient(135deg,var(--electric),var(--accent));color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(77,168,255,.4);}
+.mt{display:flex;gap:8px;margin-bottom:16px;align-items:center;}
+.mb{padding:9px 22px;border-radius:14px;cursor:pointer;font-family:'Rajdhani';font-weight:800;font-size:.85rem;letter-spacing:1px;transition:all .2s;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--muted);text-transform:uppercase;}
+.mb.active{background:linear-gradient(135deg,var(--electric),var(--accent2));border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(77,168,255,.4);}
+.ml{font-family:'Share Tech Mono';font-size:.65rem;color:var(--muted);margin-right:4px;font-weight:700;}
+.ws{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.wb{padding:7px 16px;border-radius:12px;cursor:pointer;font-family:'Share Tech Mono';font-size:.68rem;letter-spacing:1px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--muted);transition:all .2s;font-weight:700;}
+.wb.active{background:linear-gradient(135deg,var(--electric),var(--accent));border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(77,168,255,.4);}
+.ph-header{
+  background:linear-gradient(135deg,rgba(255,209,102,.16),rgba(255,209,102,.05));
+  backdrop-filter:blur(14px);border:1px solid rgba(255,209,102,.35);border-radius:20px;
+  padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;
+  box-shadow:0 6px 24px rgba(255,209,102,.15);
+}
+.ph-num{font-family:'Black Ops One';font-size:2.1rem;color:var(--gold);line-height:1;}
+.ph-info h3{font-family:'Black Ops One';font-size:1rem;letter-spacing:.5px;color:var(--text);}
+.ph-info p{font-size:.8rem;color:var(--muted);margin-top:3px;line-height:1.5;font-weight:600;}
+.ph-badge{margin-left:auto;text-align:right;}
+.ph-badge span{display:block;font-family:'Share Tech Mono';font-size:.62rem;color:var(--muted);font-weight:700;}
+.ph-badge strong{font-family:'Black Ops One';font-size:1.1rem;color:var(--gold);}
+.wg{display:grid;gap:12px;}
+.dc{
+  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .25s;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+.dc.done{border-color:rgba(77,168,255,.5);box-shadow:0 6px 24px rgba(77,168,255,.25);}
+.dh{display:flex;align-items:center;gap:12px;padding:15px 17px;cursor:pointer;transition:background .2s;user-select:none;}
+.dh:hover{background:rgba(255,255,255,.04);}
+.dd{
+  width:40px;height:40px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;background:linear-gradient(145deg,var(--accent2),var(--electric));box-shadow:0 4px 12px rgba(77,168,255,.35);
+}
+.di{flex:1;}
+.di h3{font-family:'Rajdhani';font-weight:800;font-size:1rem;letter-spacing:.3px;text-transform:uppercase;}
+.di p{font-size:.76rem;color:var(--muted);margin-top:1px;font-weight:600;}
+.dxp{font-family:'Share Tech Mono';font-size:.72rem;color:#1a1400;background:var(--gold);padding:4px 9px;border-radius:8px;margin-right:4px;font-weight:700;}
+.ck{width:30px;height:30px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.05);flex-shrink:0;transition:all .2s;}
+.ck.done{background:linear-gradient(135deg,var(--accent2),var(--electric));border-color:transparent;box-shadow:0 3px 10px rgba(77,168,255,.5);}
+.ck.done::after{content:'✓';display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-weight:bold;font-size:.9rem;}
+.db{display:none;padding:0 17px 17px;}
+.db.open{display:block;}
+.tip-box{
+  background:linear-gradient(135deg,rgba(126,203,255,.14),rgba(126,203,255,.04));
+  border:1px solid rgba(126,203,255,.3);border-radius:14px;padding:11px 14px;margin-bottom:10px;
+  font-size:.8rem;color:var(--accent2);line-height:1.6;font-weight:600;
+}
+.el{list-style:none;display:grid;gap:9px;margin-top:4px;}
+.ei{
+  display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,.03);
+  border-radius:14px;padding:11px 13px;border:1px solid var(--border);transition:all .2s;
+}
+.ei.exdone{border-color:rgba(77,168,255,.4);background:rgba(77,168,255,.06);}
+.ex-check{
+  width:26px;height:26px;border-radius:9px;border:1px solid var(--border);background:rgba(255,255,255,.05);
+  flex-shrink:0;cursor:pointer;transition:all .2s;margin-top:1px;position:relative;
+}
+.ex-check:hover{background:rgba(126,203,255,.15);border-color:var(--borderlight);}
+.ex-check.checked{background:linear-gradient(135deg,var(--accent2),var(--electric));border-color:transparent;box-shadow:0 3px 10px rgba(77,168,255,.5);}
+.ex-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:.85rem;}
+.en{font-family:'Share Tech Mono';font-size:.67rem;color:var(--accent2);width:18px;flex-shrink:0;padding-top:2px;font-weight:700;}
+.einfo{flex:1;}
+.ename{font-weight:800;font-size:.9rem;letter-spacing:.2px;}
+.exdone .ename{text-decoration:line-through;color:var(--muted);}
+.edet{font-size:.75rem;color:var(--muted);margin-top:2px;font-weight:600;}
+.ecue{font-size:.7rem;color:var(--accent2);margin-top:3px;font-style:italic;font-weight:600;}
+.etag{font-family:'Share Tech Mono';font-size:.58rem;padding:3px 8px;border-radius:8px;letter-spacing:1px;flex-shrink:0;margin-top:2px;font-weight:700;}
+.etag.compound{background:rgba(126,203,255,.18);color:var(--accent2);}
+.etag.iso{background:rgba(77,168,255,.18);color:var(--accent);}
+.etag.cardio{background:rgba(255,92,122,.18);color:var(--danger);}
+.etag.core{background:rgba(170,102,255,.18);color:#c9a3ff;}
+.dnotes{
+  margin-top:10px;background:rgba(77,168,255,.07);border:1px solid rgba(77,168,255,.28);
+  border-radius:14px;padding:11px 14px;font-size:.79rem;color:var(--text);line-height:1.6;font-weight:500;
+}
+.dnotes strong{color:var(--accent2);}
+.cbtn{
+  width:100%;margin-top:12px;padding:13px;background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:14px;color:var(--muted);font-family:'Rajdhani';font-weight:800;font-size:.9rem;
+  letter-spacing:1.5px;cursor:default;text-transform:uppercase;text-align:center;
+}
+.cbtn.done{background:linear-gradient(135deg,var(--electric),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(77,168,255,.35);}
+.rc{
+  background:rgba(255,255,255,.03);backdrop-filter:blur(12px);border:1px dashed var(--borderlight);
+  border-radius:20px;padding:18px 17px;display:flex;align-items:center;gap:12px;
+}
+.ri{font-size:1.8rem;}
+.rinfo h3{font-weight:800;font-size:.92rem;color:var(--text);text-transform:uppercase;}
+.rinfo p{font-size:.77rem;color:var(--muted);margin-top:3px;line-height:1.5;font-weight:500;}
+.st{font-family:'Rajdhani';font-weight:800;font-size:.74rem;letter-spacing:3px;color:var(--accent2);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.st::after{content:'';flex:1;height:1px;background:var(--border);}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+@media(max-width:520px){.ig{grid-template-columns:1fr;}}
+.ic{background:rgba(255,255,255,.04);backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:18px;padding:15px;}
+.ic h3{font-family:'Rajdhani';font-weight:800;font-size:.76rem;letter-spacing:2px;color:var(--accent2);text-transform:uppercase;margin-bottom:8px;}
+.ic p{font-size:.84rem;color:var(--muted);line-height:1.7;font-weight:500;}
+.ic p strong{color:var(--text);}
+.roadmap{display:grid;gap:10px;}
+.rm-row{background:rgba(255,255,255,.03);border-radius:16px;padding:13px 15px;border:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.rm-num{font-family:'Black Ops One';font-size:1.4rem;color:var(--gold);width:28px;flex-shrink:0;}
+.rm-info h4{font-weight:800;font-size:.9rem;text-transform:uppercase;}
+.rm-info p{font-size:.75rem;color:var(--muted);margin-top:2px;font-weight:500;}
+.rm-wk{margin-left:auto;font-family:'Share Tech Mono';font-size:.65rem;color:var(--muted);text-align:right;font-weight:700;}
+.mt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px;}
+@media(min-width:480px){.mt-grid{grid-template-columns:repeat(4,1fr);}}
+.mbox{background:rgba(255,255,255,.04);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:13px;text-align:center;}
+.mbox.cal{background:linear-gradient(160deg,rgba(255,92,122,.2),rgba(255,92,122,.05));border-color:rgba(255,92,122,.3);}
+.mbox.pro{background:linear-gradient(160deg,rgba(77,168,255,.2),rgba(77,168,255,.05));border-color:rgba(77,168,255,.3);}
+.mbox.carb{background:linear-gradient(160deg,rgba(126,203,255,.2),rgba(126,203,255,.05));border-color:rgba(126,203,255,.3);}
+.mbox.fat{background:linear-gradient(160deg,rgba(255,209,102,.2),rgba(255,209,102,.05));border-color:rgba(255,209,102,.3);}
+.mbox .mv{font-family:'Black Ops One';font-size:1.4rem;color:var(--text);}
+.mbox .ml2{font-family:'Share Tech Mono';font-size:.58rem;color:var(--muted);letter-spacing:1px;margin-top:2px;font-weight:700;}
+.meal-plan{display:grid;gap:8px;}
+.mr{background:rgba(255,255,255,.03);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:12px 14px;display:flex;align-items:flex-start;gap:11px;}
+.mtime{font-family:'Share Tech Mono';font-size:.67rem;color:var(--accent2);min-width:60px;padding-top:2px;font-weight:700;}
+.minfo h4{font-weight:800;font-size:.88rem;}
+.minfo p{font-size:.75rem;color:var(--muted);margin-top:2px;font-weight:500;}
+.mmac{margin-left:auto;font-family:'Share Tech Mono';font-size:.62rem;color:var(--muted);text-align:right;white-space:nowrap;font-weight:700;}
+.cr{background:rgba(77,168,255,.07);border:1px solid rgba(77,168,255,.28);border-radius:14px;padding:11px 13px;font-size:.82rem;line-height:1.6;margin-bottom:8px;font-weight:500;}
+.cr.warn{background:rgba(255,92,122,.07);border-color:rgba(255,92,122,.28);}
+.cr strong{color:var(--accent2);}
+.cr.warn strong{color:var(--danger);}
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+.ach{background:rgba(255,255,255,.04);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:16px;padding:14px;text-align:center;transition:all .25s;}
+.ach.u{border-color:rgba(255,209,102,.5);box-shadow:0 4px 16px rgba(255,209,102,.2);}
+.ach .ai{font-size:1.9rem;margin-bottom:7px;filter:grayscale(1);transition:filter .3s;}
+.ach.u .ai{filter:grayscale(0);}
+.ach h4{font-family:'Rajdhani';font-weight:800;font-size:.75rem;color:var(--muted);text-transform:uppercase;}
+.ach.u h4{color:var(--gold);}
+.ach p{font-size:.67rem;color:var(--muted);margin-top:2px;opacity:.8;font-weight:500;}
+.toast{
+  position:fixed;bottom:22px;right:22px;z-index:9999;
+  background:linear-gradient(160deg,rgba(20,30,50,.9),rgba(10,18,32,.9));backdrop-filter:blur(16px);
+  border:1px solid var(--borderlight);border-radius:18px;padding:14px 19px;font-family:'Rajdhani';
+  font-weight:800;font-size:.9rem;color:var(--accent2);letter-spacing:1px;
+  box-shadow:0 8px 30px rgba(77,168,255,.3);transform:translateY(80px) scale(.9);opacity:0;
+  transition:all .35s cubic-bezier(.34,1.56,.64,1);max-width:270px;overflow:hidden;
+}
+.toast.show{transform:translateY(0) scale(1);opacity:1;}
+.toast .tt{font-family:'Black Ops One';font-size:.95rem;margin-bottom:2px;}
+.toast .tx{color:var(--gold);font-family:'Share Tech Mono';font-size:.75rem;font-weight:700;}
+.luo{position:fixed;inset:0;z-index:9998;background:rgba(2,4,10,.88);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.luo.show{opacity:1;pointer-events:all;}
+.lub{
+  text-align:center;padding:38px;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));
+  backdrop-filter:blur(20px);border:1px solid rgba(255,209,102,.4);border-radius:26px;
+  box-shadow:0 20px 60px rgba(255,209,102,.25);transform:scale(.8);transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.luo.show .lub{transform:scale(1);}
+.lub h1{font-family:'Black Ops One';font-size:2.7rem;color:var(--gold);letter-spacing:1px;}
+.lub .nl{font-family:'Black Ops One';font-size:4.5rem;color:var(--gold);line-height:1;margin:14px 0;text-shadow:0 0 40px rgba(255,209,102,.5);}
+.lub p{font-size:1rem;color:var(--text);margin-top:6px;font-weight:700;}
+.luc{margin-top:18px;padding:13px 30px;border-radius:14px;background:linear-gradient(135deg,var(--gold),#ffb84d);border:none;color:#2a1a00;font-family:'Black Ops One';font-size:.95rem;letter-spacing:2px;cursor:pointer;box-shadow:0 6px 20px rgba(255,209,102,.35);}
+.hidden{display:none;}
+
+/* ===== DAILY BACK BUILDER CARD ===== */
+.daily-card{
+  background:linear-gradient(150deg,rgba(126,203,255,.14),rgba(59,130,246,.05));
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(126,203,255,.35);border-radius:22px;padding:18px;margin-bottom:18px;
+  box-shadow:0 8px 28px rgba(77,168,255,.2);
+}
+.daily-top{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.daily-icon{
+  width:46px;height:46px;border-radius:15px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;background:linear-gradient(145deg,var(--accent2),var(--electric));box-shadow:0 4px 14px rgba(77,168,255,.4);
+}
+.daily-info{flex:1;}
+.daily-info h3{font-family:'Rajdhani';font-weight:800;font-size:.92rem;letter-spacing:.5px;text-transform:uppercase;color:var(--text);}
+.daily-info p{font-size:.74rem;color:var(--muted);margin-top:2px;font-weight:600;}
+.daily-count{
+  font-family:'Black Ops One';font-size:1.9rem;color:var(--accent2);text-shadow:0 0 20px rgba(126,203,255,.5);
+  min-width:44px;text-align:center;
+}
+.daily-detail{font-size:.72rem;color:var(--muted);font-family:'Share Tech Mono';margin-bottom:12px;font-weight:600;}
+.daily-btn{
+  width:100%;padding:14px;background:linear-gradient(135deg,var(--electric),var(--accent2));border:none;
+  border-radius:16px;color:#fff;font-family:'Black Ops One';font-size:1rem;letter-spacing:2px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(77,168,255,.4);transition:transform .15s;text-transform:uppercase;
+}
+.daily-btn:active{transform:scale(.97);}
+.daily-sub{font-size:.72rem;color:var(--muted);margin-top:8px;text-align:center;font-weight:500;}
+
+/* ===== RANK BADGE ===== */
+.rank-badge{
+  margin-left:8px;background:linear-gradient(160deg,var(--rankcolor,var(--accent))33,var(--rankcolor,var(--accent))0d);
+  border:1px solid var(--rankcolor,var(--accent));border-radius:14px;padding:6px 14px;text-align:center;
+  transition:all .3s;box-shadow:0 4px 16px var(--rankcolor,var(--accent))40;
+}
+.rk-letter{font-family:'Black Ops One';font-size:1.5rem;color:var(--rankcolor,var(--accent));line-height:1;text-shadow:0 0 14px var(--rankcolor,var(--accent))88;}
+.rk-label{font-family:'Share Tech Mono';font-size:.5rem;color:var(--rankcolor,var(--accent));letter-spacing:2px;margin-top:1px;font-weight:700;}
+.rank-badge.rank-E{--rankcolor:#8b9bbf;}
+.rank-badge.rank-D{--rankcolor:#4da8ff;}
+.rank-badge.rank-C{--rankcolor:#7ecbff;}
+.rank-badge.rank-B{--rankcolor:#ffd166;}
+.rank-badge.rank-A{--rankcolor:#ff9d4d;}
+.rank-badge.rank-S{--rankcolor:#ff5c9d;animation:rankSPulse 1.6s ease-in-out infinite;}
+@keyframes rankSPulse{0%,100%{box-shadow:0 4px 16px var(--rankcolor)40;}50%{box-shadow:0 4px 26px var(--rankcolor)90;}}
+
+/* ===== LOGIN STREAK STAT (passive display; confirmation happens via popup) ===== */
+.login-flame .v{display:flex;align-items:center;justify-content:center;gap:3px;}
+.flame-icon{font-size:.95rem;display:inline-block;animation:flameFlicker 1.4s ease-in-out infinite;}
+@keyframes flameFlicker{0%,100%{transform:scale(1) rotate(-3deg);}50%{transform:scale(1.15) rotate(3deg);}}
+
+/* ===== PARTICLE BURST ===== */
+.particle-layer{position:fixed;inset:0;pointer-events:none;z-index:9997;overflow:hidden;}
+.particle{
+  position:absolute;border-radius:50%;opacity:0;
+  animation:particleBurst .9s cubic-bezier(.2,.8,.3,1) forwards;
+}
+@keyframes particleBurst{
+  0%{opacity:1;transform:translate(0,0) scale(1);}
+  100%{opacity:0;transform:translate(var(--px),var(--py)) scale(0);}
+}
+
+/* ===== RANK-UP SPECTACLE OVERLAY ===== */
+.ruo{
+  position:fixed;inset:0;z-index:10000;background:rgba(2,4,10,.92);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;
+}
+.ruo.show{opacity:1;pointer-events:all;}
+.ruo-box{
+  text-align:center;padding:38px;
+  background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));backdrop-filter:blur(20px);
+  border:1px solid var(--rankcolor,var(--accent));border-radius:28px;
+  box-shadow:0 24px 70px var(--rankcolor,var(--accent))44;transform:scale(.6) rotate(-4deg);
+  transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.ruo.show .ruo-box{transform:scale(1) rotate(0deg);}
+.ruo-rays{
+  position:absolute;inset:0;background:conic-gradient(from 0deg,transparent,var(--rankcolor,var(--accent))18,transparent 20%,transparent 40%,var(--rankcolor,var(--accent))18,transparent 60%);
+  animation:raySpin 6s linear infinite;pointer-events:none;
+}
+@keyframes raySpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.ruo-eyebrow{font-family:'Share Tech Mono';font-size:.85rem;letter-spacing:4px;color:var(--muted);margin-bottom:6px;font-weight:700;}
+.ruo-title{font-family:'Black Ops One';font-size:1.6rem;letter-spacing:1px;color:var(--text);}
+.ruo-rank{
+  font-family:'Black Ops One';font-size:9rem;line-height:1;margin:10px 0;
+  color:var(--rankcolor,var(--accent));text-shadow:0 0 50px var(--rankcolor,var(--accent))aa;
+  animation:rankPop .5s cubic-bezier(.34,1.56,.64,1) .2s both;
+}
+@keyframes rankPop{0%{transform:scale(0) rotate(-15deg);}60%{transform:scale(1.15) rotate(5deg);}100%{transform:scale(1) rotate(0deg);}}
+.ruo-desc{font-size:1rem;color:var(--muted);max-width:320px;margin:0 auto 20px;line-height:1.6;font-weight:600;}
+.ruo-close{
+  padding:13px 34px;border-radius:14px;background:linear-gradient(135deg,var(--rankcolor,var(--gold)),var(--rankcolor,var(--gold)));border:none;
+  color:#08101f;font-family:'Black Ops One';font-size:.95rem;letter-spacing:2px;cursor:pointer;
+  position:relative;z-index:2;box-shadow:0 6px 20px var(--rankcolor,var(--gold))55;
+}
+.ruo-rank-E{--rankcolor:#8b9bbf;} .ruo-rank-D{--rankcolor:#4da8ff;} .ruo-rank-C{--rankcolor:#7ecbff;}
+.ruo-rank-B{--rankcolor:#ffd166;} .ruo-rank-A{--rankcolor:#ff9d4d;} .ruo-rank-S{--rankcolor:#ff5c9d;}
+
+/* ===== LOGIN CONFIRMATION POPUP ===== */
+.lgo{
+  position:fixed;inset:0;z-index:10001;background:rgba(2,4,10,.88);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.lgo.show{opacity:1;pointer-events:all;}
+.lgo-box{
+  text-align:center;padding:32px 28px;
+  background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));backdrop-filter:blur(20px);
+  border:1px solid var(--borderlight);border-radius:26px;
+  box-shadow:0 20px 60px rgba(77,168,255,.3);transform:scale(.7);transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  max-width:320px;
+}
+.lgo.show .lgo-box{transform:scale(1);}
+.lgo-flame{font-size:3.5rem;margin-bottom:8px;display:block;animation:lgoFlamePulse 1s ease-in-out infinite;}
+@keyframes lgoFlamePulse{0%,100%{transform:scale(1);}50%{transform:scale(1.15) rotate(-3deg);}}
+.lgo-title{font-family:'Black Ops One';font-size:1.3rem;letter-spacing:1px;color:var(--text);margin-bottom:8px;text-transform:uppercase;}
+.lgo-streak{font-family:'Black Ops One';font-size:3rem;color:var(--gold);line-height:1;margin:6px 0;text-shadow:0 0 30px rgba(255,209,102,.5);}
+.lgo-streak-label{font-family:'Share Tech Mono';font-size:.7rem;color:var(--muted);letter-spacing:2px;margin-bottom:16px;font-weight:700;}
+.lgo-desc{font-size:.88rem;color:var(--muted);margin-bottom:20px;line-height:1.5;font-weight:500;}
+.lgo-btn{
+  width:100%;padding:15px;background:linear-gradient(135deg,var(--electric),var(--accent2));border:none;color:#fff;
+  font-family:'Black Ops One';font-size:1rem;letter-spacing:2px;cursor:pointer;box-shadow:0 8px 24px rgba(77,168,255,.4);
+  transition:transform .15s;border-radius:16px;text-transform:uppercase;
+}
+.lgo-btn:active{transform:scale(.96);}
+
+/* ============================================================
+   STICK-FIGURE DEMO ANIMATIONS
+   ============================================================ */
+.demo-toggle{
+  background:rgba(126,203,255,.1);border:1px solid var(--borderlight);border-radius:10px;
+  padding:5px 11px;font-family:'Share Tech Mono';font-size:.62rem;letter-spacing:.5px;font-weight:700;
+  color:var(--accent2);cursor:pointer;flex-shrink:0;transition:all .2s;margin-top:2px;
+  white-space:nowrap;
+}
+.demo-toggle:hover{background:linear-gradient(135deg,var(--electric),var(--accent2));color:#fff;border-color:transparent;}
+.demo-box{
+  display:none;margin-top:8px;background:rgba(0,0,0,.25);border:1px solid var(--border);
+  border-radius:14px;padding:10px;align-items:center;justify-content:center;
+}
+.demo-box.open{display:flex;}
+.sf-anim{width:90px;height:100px;stroke:var(--accent2);stroke-width:4;stroke-linecap:round;fill:none;}
+.sf-anim .sf-head{fill:var(--accent2);stroke:none;}
+.sf-anim .sf-bar,.sf-anim .sf-barh,.sf-anim .sf-dbell,.sf-anim .sf-dbell2,.sf-anim .sf-plate{
+  fill:var(--gold);stroke:none;
+}
+.sf-anim .sf-bench-pad{stroke:var(--muted);stroke-width:6;}
+
+/* SQUAT: torso/thigh bend down and up */
+@keyframes sqMove{0%,100%{transform:translateY(0);}50%{transform:translateY(14px);}}
+.sf-squat .sf-torso,.sf-squat .sf-armL,.sf-squat .sf-armR{animation:sqMove 1.6s ease-in-out infinite;}
+.sf-squat .sf-thighL,.sf-squat .sf-thighR{animation:sqThigh 1.6s ease-in-out infinite;}
+@keyframes sqThigh{0%,100%{transform:translateY(0) scaleY(1);}50%{transform:translateY(10px) scaleY(.85);}}
+.sf-squat .sf-head{animation:sqMove 1.6s ease-in-out infinite;}
+
+/* DEADLIFT: hip hinge down/up with bar */
+@keyframes dlTorso{0%,100%{transform:rotate(0deg);}50%{transform:rotate(35deg);}}
+.sf-deadlift .sf-torso,.sf-deadlift .sf-head{animation:dlTorso 1.8s ease-in-out infinite;transform-origin:60px 60px;}
+.sf-deadlift .sf-armL,.sf-deadlift .sf-armR,.sf-deadlift .sf-bar{animation:dlArm 1.8s ease-in-out infinite;}
+@keyframes dlArm{0%,100%{transform:translateY(0);}50%{transform:translateY(18px);}}
+
+/* RDL: similar hinge, less range */
+.sf-rdl .sf-torso,.sf-rdl .sf-head{animation:rdlTorso 1.8s ease-in-out infinite;transform-origin:58px 62px;}
+@keyframes rdlTorso{0%,100%{transform:rotate(0deg);}50%{transform:rotate(28deg);}}
+.sf-rdl .sf-armL,.sf-rdl .sf-armR,.sf-rdl .sf-bar{animation:dlArm 1.8s ease-in-out infinite;}
+
+/* BENCH PRESS: arms extend/retract */
+@keyframes benchArm{0%,100%{transform:translateY(0);}50%{transform:translateY(-22px);}}
+.sf-bench .sf-armL,.sf-bench .sf-armR,.sf-bench .sf-barh{animation:benchArm 1.4s ease-in-out infinite;}
+
+/* INCLINE PRESS */
+@keyframes inclArm{0%,100%{transform:translate(0,0);}50%{transform:translate(6px,-18px);}}
+.sf-incline .sf-armL,.sf-incline .sf-armR,.sf-incline .sf-barh{animation:inclArm 1.4s ease-in-out infinite;}
+
+/* OVERHEAD PRESS */
+@keyframes ohpArm{0%,100%{transform:translateY(24px);}50%{transform:translateY(0);}}
+.sf-ohp .sf-armL,.sf-ohp .sf-armR,.sf-ohp .sf-barh{animation:ohpArm 1.5s ease-in-out infinite;}
+
+/* ROW: arm pulls db back and forth */
+@keyframes rowArm{0%,100%{transform:translateX(0);}50%{transform:translateX(28px);}}
+.sf-row .sf-armL,.sf-row .sf-dbell{animation:rowArm 1.3s ease-in-out infinite;}
+
+/* PULLDOWN: arms pull down from overhead */
+@keyframes pdArm{0%,100%{transform:translateY(0);}50%{transform:translateY(30px);}}
+.sf-pulldown .sf-armL,.sf-pulldown .sf-armR{animation:pdArm 1.5s ease-in-out infinite;}
+
+/* PUSH UP: whole body dips down/up */
+@keyframes puBody{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+.sf-pushup .sf-torso,.sf-pushup .sf-head,.sf-pushup .sf-thighL,.sf-pushup .sf-shinL{animation:puBody 1.5s ease-in-out infinite;}
+@keyframes puArm{0%,100%{transform:scaleY(1);}50%{transform:scaleY(.55);}}
+.sf-pushup .sf-armL,.sf-pushup .sf-armR{animation:puArm 1.5s ease-in-out infinite;transform-origin:top;}
+
+/* LUNGE: front leg bends */
+@keyframes lgBody{0%,100%{transform:translateY(0);}50%{transform:translateY(12px);}}
+.sf-lunge .sf-torso,.sf-lunge .sf-head,.sf-lunge .sf-armL,.sf-lunge .sf-armR{animation:lgBody 1.6s ease-in-out infinite;}
+.sf-lunge .sf-thighL,.sf-lunge .sf-shinL{animation:lgBody 1.6s ease-in-out infinite;}
+
+/* HIP THRUST: hips rise/fall */
+@keyframes htHip{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.sf-hipthrust .sf-torso,.sf-hipthrust .sf-thighL,.sf-hipthrust .sf-shinL{animation:htHip 1.4s ease-in-out infinite;}
+
+/* CURL: forearm curls up/down */
+@keyframes curlArm{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-70deg);}}
+.sf-curl .sf-armLoL,.sf-curl .sf-dbell2{animation:curlArm 1.3s ease-in-out infinite;transform-origin:45px 65px;}
+
+/* TRICEP: forearm extends */
+@keyframes triArm{0%,100%{transform:rotate(0deg);}50%{transform:rotate(50deg);}}
+.sf-tricep .sf-armLoL{animation:triArm 1.3s ease-in-out infinite;transform-origin:65px 30px;}
+
+/* LATERAL RAISE: arms raise sideways */
+@keyframes latArm{0%,100%{transform:translateY(20px);}50%{transform:translateY(0);}}
+.sf-lateral .sf-armL,.sf-lateral .sf-armR{animation:latArm 1.5s ease-in-out infinite;}
+
+/* PLANK/CORE: subtle hold pulse */
+@keyframes coreHold{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+.sf-plank .sf-torso,.sf-plank .sf-head{animation:coreHold 2s ease-in-out infinite;}
+
+/* CALF RAISE: heel rises */
+@keyframes calfUp{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.sf-calf .sf-head,.sf-calf .sf-torso,.sf-calf .sf-armL,.sf-calf .sf-armR,.sf-calf .sf-thighL,.sf-calf .sf-thighR{animation:calfUp 1.3s ease-in-out infinite;}
+@keyframes heelUp{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-14px) rotate(-15deg);}}
+.sf-calf .sf-heelL,.sf-calf .sf-heelR{animation:heelUp 1.3s ease-in-out infinite;}
+
+/* LEG CURL/EXT: shin swings */
+@keyframes legSwing{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-55deg);}}
+.sf-legcurl .sf-shinL{animation:legSwing 1.3s ease-in-out infinite;transform-origin:115px 55px;}
+
+/* LEG PRESS: leg extends/retracts, plate moves */
+@keyframes lpLeg{0%,100%{transform:translateX(0);}50%{transform:translateX(-20px);}}
+.sf-legpress .sf-shinL,.sf-legpress .sf-plate{animation:lpLeg 1.4s ease-in-out infinite;}
+
+/* HIIT: fast running motion */
+@keyframes hiitRun{0%,100%{transform:rotate(0deg);}50%{transform:rotate(30deg);}}
+.sf-hiit .sf-thighL,.sf-hiit .sf-shinL{animation:hiitRun .5s ease-in-out infinite;transform-origin:58px 65px;}
+@keyframes hiitRun2{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-30deg);}}
+.sf-hiit .sf-thighR,.sf-hiit .sf-shinR{animation:hiitRun2 .5s ease-in-out infinite;transform-origin:58px 65px;}
+@keyframes hiitBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.sf-hiit .sf-head,.sf-hiit .sf-torso{animation:hiitBob .5s ease-in-out infinite;}
+
+/* FLY: arms open/close in arc */
+@keyframes flyArm{0%,100%{transform:translateX(0) translateY(0);}50%{transform:translateX(0) translateY(-16px);}}
+.sf-fly .sf-armL,.sf-fly .sf-armR{animation:flyArm 1.5s ease-in-out infinite;}
+
+/* SUPERSET/CIRCUIT generic: alternating full-body pulse */
+@keyframes circGeneric{0%,100%{transform:translateY(0);}33%{transform:translateY(8px);}66%{transform:translateY(-4px);}}
+.sf-circuit .sf-torso,.sf-circuit .sf-head,.sf-circuit .sf-armL,.sf-circuit .sf-armR{animation:circGeneric 1.8s ease-in-out infinite;}
+
+</style>
+</head>
+<body>
+<div class="app">
+<div class="hdr"><div class="logo">FORGE<span>// 6-MONTH BEGINNER CUT · 209 LBS · 6'2"</span></div></div>
+
+<div class="pc">
+  <div class="pt">
+    <div class="av">🔥</div>
+    <div class="pi"><h2>ROOKIE WARRIOR</h2><p>6'2" · 209 LBS · SEDENTARY → ELITE · 26 WEEKS</p></div>
+    <div class="rank-badge" id="rankBadge"><div class="rk-letter" id="rankLetter">E</div><div class="rk-label">RANK</div></div>
+    <div class="lb"><div class="ln" id="lvlNum">1</div><div class="ll">LEVEL</div></div>
+  </div>
+  <div class="xl"><span>XP PROGRESS</span><span><strong id="xpCur">0</strong> / <span id="xpNeed">150</span> XP</span></div>
+  <div class="xbw"><div class="xbf" id="xpBar" style="width:0%"></div></div>
+  <div class="sr">
+    <div class="sb"><div class="v" id="stW">0</div><div class="l">WORKOUTS</div></div>
+    <div class="sb"><div class="v" id="stS">0</div><div class="l">STREAK</div></div>
+    <div class="sb login-flame"><div class="v" id="stLogin">0<span class="flame-icon">🔥</span></div><div class="l">LOGIN STREAK</div></div>
+    <div class="sb"><div class="v" id="stX">0</div><div class="l">TOTAL XP</div></div>
+    <div class="sb"><div class="v" id="stPh">0</div><div class="l">WEEKS DONE</div></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('program')">📋 PROGRAM</button>
+  <button class="tab" onclick="showTab('nutrition')">🥩 NUTRITION</button>
+  <button class="tab" onclick="showTab('overview')">🗺️ OVERVIEW</button>
+  <button class="tab" onclick="showTab('achievements')">🏆 AWARDS</button>
+  <button class="tab" onclick="showTab('data')">💾 DATA</button>
+</div>
+
+<div id="tab-program">
+  <div class="daily-card" id="dailyCard">
+    <div class="daily-top">
+      <div class="daily-icon">🔁</div>
+      <div class="daily-info">
+        <h3>DAILY BACK BUILDER</h3>
+        <p>Inverted Rows — as many sets as you want, every single day</p>
+      </div>
+      <div class="daily-count" id="dailyCount">0</div>
+    </div>
+    <div class="daily-detail">8–15 reps per set · rest as needed · resets at midnight</div>
+    <button class="daily-btn" onclick="logInvertedRow()">+1 SET DONE</button>
+    <div class="daily-sub" id="dailySub">Log your first set of the day to start earning bonus XP.</div>
+  </div>
+
+  <div class="mt">
+    <span class="ml">MODE:</span>
+    <button class="mb active" id="btnGym" onclick="setMode('gym')">🏋️ GYM</button>
+    <button class="mb" id="btnHome" onclick="setMode('home')">🏠 HOME</button>
+  </div>
+  <div class="phases" id="phaseStrip"></div>
+  <div class="ws" id="weekSel"></div>
+  <div id="phaseHeader"></div>
+  <div class="wg" id="weekGrid"></div>
+</div>
+
+<div id="tab-nutrition" class="hidden">
+  <div class="st">DAILY CUT TARGETS — 209 LBS SEDENTARY BEGINNER</div>
+  <div class="mt-grid">
+    <div class="mbox cal"><div class="mv">2,400</div><div class="ml2">CALORIES</div></div>
+    <div class="mbox pro"><div class="mv">180g</div><div class="ml2">PROTEIN</div></div>
+    <div class="mbox carb"><div class="mv">220g</div><div class="ml2">CARBS</div></div>
+    <div class="mbox fat"><div class="mv">70g</div><div class="ml2">FAT</div></div>
+  </div>
+  <div class="ic" style="margin-bottom:12px">
+    <h3>📐 Why These Numbers</h3>
+    <p>At 209 lbs sedentary, your TDEE is ~2,650 kcal. A <strong>250–300 kcal deficit</strong> puts you at ~2,400 — deliberately moderate for a beginner. Cutting harder kills muscle and wrecks gym performance before you even get started. Target: <strong>0.5 lb fat loss per week</strong> while building muscle. Rest days drop to <strong>2,100 kcal</strong>. Keep protein at 180g every single day regardless.</p>
+  </div>
+  <div class="st">SAMPLE TRAINING DAY MEAL PLAN</div>
+  <div class="meal-plan">
+    <div class="mr"><div class="mtime">7:30 AM</div><div class="minfo"><h4>Breakfast</h4><p>4 whole eggs + 40g oats + banana + black coffee</p></div><div class="mmac">~540 kcal<br>33g P · 52g C · 16g F</div></div>
+    <div class="mr"><div class="mtime">11:00 AM</div><div class="minfo"><h4>Mid-Morning</h4><p>150g Greek yogurt (0%) + apple + 20g almonds</p></div><div class="mmac">~300 kcal<br>19g P · 26g C · 12g F</div></div>
+    <div class="mr"><div class="mtime">1:30 PM</div><div class="minfo"><h4>Lunch — Biggest Meal</h4><p>180g chicken breast + 130g cooked rice + large salad + olive oil</p></div><div class="mmac">~560 kcal<br>47g P · 56g C · 10g F</div></div>
+    <div class="mr"><div class="mtime">4:30 PM</div><div class="minfo"><h4>Pre-Workout</h4><p>1 scoop whey + banana + 2 rice cakes</p></div><div class="mmac">~330 kcal<br>27g P · 46g C · 3g F</div></div>
+    <div class="mr"><div class="mtime">7:30 PM</div><div class="minfo"><h4>Dinner</h4><p>180g salmon or lean beef + 150g sweet potato + broccoli</p></div><div class="mmac">~550 kcal<br>43g P · 42g C · 13g F</div></div>
+    <div class="mr"><div class="mtime">9:00 PM</div><div class="minfo"><h4>Evening</h4><p>150g cottage cheese — slow casein protein overnight</p></div><div class="mmac">~120 kcal<br>18g P · 5g C · 3g F</div></div>
+  </div>
+  <div class="st" style="margin-top:14px">PHASE-BY-PHASE NUTRITION ADJUSTMENTS</div>
+  <div class="ic" style="margin-bottom:8px"><h3>📈 Phase 1–2 (Weeks 1–8)</h3><p>Stick to 2,400 kcal training / 2,100 rest. Protein 180g. This is your foundation. Don't overthink it — hit these numbers daily and fat loss happens automatically.</p></div>
+  <div class="ic" style="margin-bottom:8px"><h3>📈 Phase 3–4 (Weeks 9–16)</h3><p>Drop training calories to <strong>2,300</strong> and rest to <strong>2,000</strong>. By now your metabolism has adapted and you're stronger. A slightly tighter deficit keeps fat loss moving without muscle loss.</p></div>
+  <div class="ic" style="margin-bottom:8px"><h3>📈 Phase 5–6 (Weeks 17–26)</h3><p>Training days stay at <strong>2,300</strong>. Add a <strong>refeed day</strong> once per week (2,700 kcal, mostly carbs) to reset leptin and keep metabolism from crashing. Advanced technique — you've earned it by now.</p></div>
+  <div class="st" style="margin-top:14px">NON-NEGOTIABLE RULES</div>
+  <div class="cr"><strong>✅ 180g PROTEIN DAILY — NO EXCEPTIONS</strong> — This single number matters more than anything else. Hit it every day including rest days. It's what keeps your muscle while the fat leaves.</div>
+  <div class="cr"><strong>✅ 8,000–10,000 STEPS EVERY DAY</strong> — You start sedentary. Walking burns 250–350 extra kcal/day without affecting recovery. Over 6 months that's ~5 lbs of fat from walking alone.</div>
+  <div class="cr"><strong>✅ DRINK 3.5L WATER DAILY</strong> — Dehydration tanks performance, makes you feel falsely hungry, and slows fat metabolism.</div>
+  <div class="cr"><strong>✅ SLEEP 8 HOURS MINIMUM</strong> — Growth hormone releases during deep sleep. Poor sleep spikes cortisol, which stores fat and burns muscle.</div>
+  <div class="cr warn"><strong>❌ NEVER GO BELOW 2,000 KCAL</strong> — Too big a deficit = muscle loss, metabolic adaptation, hormonal crash, and rebound.</div>
+  <div class="cr warn"><strong>❌ NO ALCOHOL IN PHASE 1</strong> — Give yourself 4 clean weeks. Alcohol halts fat oxidation for 48 hrs and destroys sleep quality.</div>
+  <div class="cr warn"><strong>❌ DON'T SKIP PROTEIN ON REST DAYS</strong> — Muscle breakdown is 24/7. Rest days need just as much protein as training days.</div>
+  <div class="st" style="margin-top:14px">SUPPLEMENT STACK</div>
+  <div class="ic"><h3>💊 Simple & Effective</h3><p>▸ <strong>Whey Protein</strong> — Hit 180g/day affordably.<br>▸ <strong>Creatine Monohydrate 5g/day</strong> — Most studied supplement. Increases strength, retains muscle on cut.<br>▸ <strong>Vitamin D3 2,000 IU</strong> — Most sedentary people are deficient.<br>▸ <strong>Magnesium Glycinate 300mg</strong> — Before bed. Improves sleep depth and recovery.<br>▸ <strong>Black Coffee pre-workout</strong> — Free and effective.<br>▸ <strong>Fish Oil 2g EPA/DHA</strong> — Reduces inflammation, supports joints.</p></div>
+</div>
+
+<div id="tab-overview" class="hidden">
+  <div class="st">YOUR 6-MONTH TRANSFORMATION ROADMAP</div>
+  <div class="ig">
+    <div class="ic"><h3>📊 Starting Point</h3><p>6'2" / 209 lbs / sedentary / skinny-fat. Higher body fat, lower muscle mass, but a <strong>big frame to build on</strong>. Beginners respond to training faster than anyone — visible changes within <strong>4–5 weeks</strong>.</p></div>
+    <div class="ic"><h3>🎯 The Goal</h3><p>Lose <strong>20–25 lbs of fat</strong> over 26 weeks while building 8–12 lbs of muscle simultaneously. End state: significantly leaner, noticeably more muscular, vastly stronger, sustainable lifestyle built in.</p></div>
+    <div class="ic"><h3>⏱️ Training Volume</h3><p><strong>Phase 1–2:</strong> 3x/week Full Body<br><strong>Phase 3–4:</strong> 4x/week Upper/Lower & PPL<br><strong>Phase 5:</strong> 4x PPL + cardio<br><strong>Phase 6:</strong> 5x split + definition</p></div>
+    <div class="ic"><h3>💡 Why This Works</h3><p>Progressive overload + moderate deficit + high protein = the only proven formula for simultaneous fat loss and muscle gain. Every phase builds directly on the last.</p></div>
+  </div>
+  <div class="st">THE 6-PHASE JOURNEY</div>
+  <div class="roadmap">
+    <div class="rm-row"><div class="rm-num">1</div><div class="rm-info"><h4>LEARN — Full Body 3x/week</h4><p>Master the 6 fundamental movements. Form before weight. Begin deficit.</p></div><div class="rm-wk">WK 1–4</div></div>
+    <div class="rm-row"><div class="rm-num">2</div><div class="rm-info"><h4>BUILD — Full Body 3x/week + Load</h4><p>Progressive overload. Barbell introduced. First cardio finishers.</p></div><div class="rm-wk">WK 5–8</div></div>
+    <div class="rm-row"><div class="rm-num">3</div><div class="rm-info"><h4>SHRED — Upper/Lower 4x/week</h4><p>Split training. More volume per muscle group. HIIT added.</p></div><div class="rm-wk">WK 9–12</div></div>
+    <div class="rm-row"><div class="rm-num">4</div><div class="rm-info"><h4>INTERMEDIATE — Push/Pull/Legs 4x</h4><p>Real strength numbers. Compound lifts loaded heavily.</p></div><div class="rm-wk">WK 13–16</div></div>
+    <div class="rm-row"><div class="rm-num">5</div><div class="rm-info"><h4>STRENGTH — PPL + Dedicated Cardio</h4><p>4x lifting + 2x dedicated cardio. Recomp locked in.</p></div><div class="rm-wk">WK 17–20</div></div>
+    <div class="rm-row"><div class="rm-num">6</div><div class="rm-info"><h4>ELITE CUT — 5-Day Split + Definition</h4><p>5 training days. Refeed days. Final shred.</p></div><div class="rm-wk">WK 21–26</div></div>
+  </div>
+  <div class="st" style="margin-top:14px">WHAT TO EXPECT WEEK BY WEEK</div>
+  <div class="ic" style="margin-bottom:8px"><h3>Weeks 1–2</h3><p>Soreness. Everything feels awkward. Scale may not move much. <strong>This is normal.</strong> Stick to it.</p></div>
+  <div class="ic" style="margin-bottom:8px"><h3>Weeks 3–5</h3><p>Movements feel natural. Clothes fit differently before the mirror shows anything. First 3–5 lbs gone.</p></div>
+  <div class="ic" style="margin-bottom:8px"><h3>Weeks 6–9</h3><p>Visible changes. Face leaner. Shoulders broader. People comment. <strong>This is the motivation surge.</strong></p></div>
+  <div class="ic" style="margin-bottom:8px"><h3>Weeks 10–16</h3><p>Major transformation. <strong>10–15 lbs of fat lost</strong> by this point. Muscle visibly present.</p></div>
+  <div class="ic"><h3>Weeks 17–26</h3><p>Final phase. No longer a beginner. Final 8–10 lbs come off. You finish with a body you'd have considered impossible in Week 1.</p></div>
+</div>
+
+<div id="tab-achievements" class="hidden">
+  <div class="st">ACHIEVEMENTS — 26 TO UNLOCK</div>
+  <div class="ag" id="achGrid"></div>
+</div>
+
+<div id="tab-data" class="hidden">
+  <div class="st">YOUR PROGRESS DATA</div>
+  <div class="ic" style="margin-bottom:14px">
+    <h3>📍 Where This Lives</h3>
+    <p>Your XP, rank, streaks, and every checked-off workout are saved <strong>only on this device, in this browser</strong>. Nothing is sent anywhere. That's great for privacy, but it means clearing your browser data, switching phones, or reinstalling will erase everything unless you back it up below.</p>
+  </div>
+
+  <div class="st">BACK UP YOUR PROGRESS</div>
+  <div class="ic" style="margin-bottom:14px">
+    <h3>⬇️ Export</h3>
+    <p>Download a save file. Keep it somewhere safe (email it to yourself, save it to cloud storage) — this is your only way to move progress to a new phone.</p>
+    <button class="daily-btn" style="margin-top:10px" onclick="exportSave()">DOWNLOAD SAVE FILE</button>
+  </div>
+  <div class="ic" style="margin-bottom:14px">
+    <h3>⬆️ Restore on a New Device</h3>
+    <p>On your new phone, open this same app, come to this tab, and load the save file you downloaded.</p>
+    <input type="file" id="importFileInput" accept="application/json" style="display:none" onchange="handleImportFile(event)">
+    <button class="daily-btn" style="margin-top:10px" onclick="document.getElementById('importFileInput').click()">LOAD SAVE FILE</button>
+  </div>
+
+  <div class="st">INSTALL AS AN APP</div>
+  <div class="ic" style="margin-bottom:14px" id="installCard">
+    <h3>📲 Add to Home Screen</h3>
+    <p id="installDesc">Installing FORGE gives you a real app icon and lets it open full-screen, without a browser bar — and it keeps working with no internet connection once installed.</p>
+    <button class="daily-btn" style="margin-top:10px" id="installBtn" onclick="triggerInstall()">INSTALL FORGE</button>
+  </div>
+
+  <div class="st">DANGER ZONE</div>
+  <div class="cr warn">
+    <strong>⚠️ Clearing browser data/cache erases your save.</strong> There's no undo. Export a backup above before clearing site data, uninstalling, or switching browsers.
+  </div>
+</div>
+
+</div>
+
+<div class="toast" id="toast"><div class="tt" id="tTitle"></div><div id="tMsg"></div><div class="tx" id="tXP"></div></div>
+
+<div class="lgo" id="lgo">
+  <div class="lgo-box">
+    <span class="lgo-flame">🔥</span>
+    <div class="lgo-title" id="lgoTitle">DAILY CHECK-IN</div>
+    <div class="lgo-streak" id="lgoStreak">1</div>
+    <div class="lgo-streak-label">DAY LOGIN STREAK</div>
+    <div class="lgo-desc" id="lgoDesc">Tap below to confirm you're here today and keep your streak alive.</div>
+    <button class="lgo-btn" onclick="confirmLogin()">✓ I'M HERE — LOG ME IN</button>
+  </div>
+</div>
+
+<div class="luo" id="luo">
+  <div class="lub">
+    <h1>LEVEL UP!</h1>
+    <div class="nl" id="luN">2</div>
+    <p id="luT">IRON INITIATE</p>
+    <button class="luc" onclick="closeLU()">CONTINUE ▶</button>
+  </div>
+</div>
+
+<div class="ruo" id="ruo">
+  <div class="ruo-rays"></div>
+  <div class="ruo-box" id="ruoBox">
+    <div class="ruo-eyebrow">RANK UP</div>
+    <div class="ruo-title" id="ruoTitle">YOU HAVE ASCENDED</div>
+    <div class="ruo-rank" id="ruoRank">D</div>
+    <div class="ruo-desc" id="ruoDesc"></div>
+    <button class="ruo-close" onclick="closeRankUp()">CONTINUE ▶</button>
+  </div>
+</div>
+
+<div class="particle-layer" id="particleLayer"></div>
+
+<script>
+// ============================================================
+// STICK-FIGURE EXERCISE DEMO ANIMATIONS
+// 21 core movement patterns covering all 217 exercise variants
+// Pure SVG + CSS keyframes, no external assets/APIs
+// ============================================================
+
+function classifyExercise(name){
+  const n=name.toLowerCase();
+  const rules=[
+    ['squat',['squat','goblet squat','hack squat','pistol squat','jump squat','wall sit']],
+    ['deadlift',['deadlift']],
+    ['romanian_deadlift',['romanian deadlift','good morning']],
+    ['bench_press',['bench press','flat barbell press','flat db press','db press']],
+    ['incline_press',['incline']],
+    ['overhead_press',['overhead press','ohp','shoulder press','arnold press']],
+    ['row',['row']],
+    ['pulldown',['pulldown','pull-up','pull up','dead hang']],
+    ['push_up',['push-up','push up','pike push','dip','planche']],
+    ['lunge',['lunge','split squat','step']],
+    ['hip_thrust',['hip thrust','glute bridge']],
+    ['curl',['curl']],
+    ['tricep',['tricep','pushdown','skull crusher','extension']],
+    ['lateral_raise',['lateral raise','face pull','rear delt','upright row']],
+    ['plank_core',['plank','dead bug','bird dog','crunch','leg raise','ab wheel','russian twist','core','ab circuit','sit-up','superman']],
+    ['calf_raise',['calf raise']],
+    ['leg_curl_ext',['leg curl','leg extension','nordic']],
+    ['leg_press',['leg press']],
+    ['cardio_hiit',['hiit','sprint','burpee','mountain climber','jump lunge','tabata','jog','run','cardio','liss','walk']],
+    ['fly',['fly','pec deck']],
+  ];
+  for(const [cat,kws] of rules){
+    for(const kw of kws){ if(n.includes(kw)) return cat; }
+  }
+  return 'superset_circuit';
+}
+
+// Each entry: {viewBox, css keyframes name, svg markup with class hooks for animation}
+// Stick figure built from simple shapes: circle head, line torso/limbs.
+// All animations loop via CSS, 1.4–2s cycles, joints animated via transform.
+
+const demoSVGs={
+squat:`<svg viewBox="0 0 120 140" class="sf-anim sf-squat">
+  <circle class="sf-head" cx="60" cy="20" r="9"/>
+  <line class="sf-torso" x1="60" y1="29" x2="60" y2="65"/>
+  <line class="sf-armL" x1="60" y1="38" x2="40" y2="55"/>
+  <line class="sf-armR" x1="60" y1="38" x2="80" y2="55"/>
+  <line class="sf-thighL" x1="60" y1="65" x2="45" y2="95"/>
+  <line class="sf-thighR" x1="60" y1="65" x2="75" y2="95"/>
+  <line class="sf-shinL" x1="45" y1="95" x2="48" y2="130"/>
+  <line class="sf-shinR" x1="75" y1="95" x2="72" y2="130"/>
+</svg>`,
+deadlift:`<svg viewBox="0 0 120 140" class="sf-anim sf-deadlift">
+  <circle class="sf-head" cx="60" cy="18" r="9"/>
+  <line class="sf-torso" x1="60" y1="27" x2="58" y2="60"/>
+  <line class="sf-armL" x1="60" y1="35" x2="55" y2="75"/>
+  <line class="sf-armR" x1="60" y1="35" x2="65" y2="75"/>
+  <line class="sf-thighL" x1="58" y1="60" x2="50" y2="95"/>
+  <line class="sf-thighR" x1="58" y1="60" x2="66" y2="95"/>
+  <line class="sf-shinL" x1="50" y1="95" x2="52" y2="130"/>
+  <line class="sf-shinR" x1="66" y1="95" x2="64" y2="130"/>
+  <rect class="sf-bar" x="45" y="73" width="30" height="4" rx="2"/>
+</svg>`,
+romanian_deadlift:`<svg viewBox="0 0 120 140" class="sf-anim sf-rdl">
+  <circle class="sf-head" cx="60" cy="20" r="9"/>
+  <line class="sf-torso" x1="60" y1="29" x2="58" y2="62"/>
+  <line class="sf-armL" x1="60" y1="36" x2="56" y2="80"/>
+  <line class="sf-armR" x1="60" y1="36" x2="64" y2="80"/>
+  <line class="sf-thighL" x1="58" y1="62" x2="52" y2="98"/>
+  <line class="sf-thighR" x1="58" y1="62" x2="64" y2="98"/>
+  <line class="sf-shinL" x1="52" y1="98" x2="53" y2="130"/>
+  <line class="sf-shinR" x1="64" y1="98" x2="63" y2="130"/>
+  <rect class="sf-bar" x="48" y="78" width="24" height="4" rx="2"/>
+</svg>`,
+bench_press:`<svg viewBox="0 0 140 100" class="sf-anim sf-bench">
+  <rect x="20" y="65" width="100" height="8" rx="2" class="sf-bench-pad"/>
+  <circle class="sf-head" cx="35" cy="55" r="9"/>
+  <line class="sf-torso" x1="44" y1="58" x2="95" y2="60"/>
+  <line class="sf-thighL" x1="95" y1="60" x2="105" y2="45"/>
+  <line class="sf-shinL" x1="105" y1="45" x2="100" y2="75"/>
+  <line class="sf-armL" x1="60" y1="58" x2="60" y2="25"/>
+  <line class="sf-armR" x1="75" y1="58" x2="75" y2="25"/>
+  <rect class="sf-barh" x="45" y="20" width="45" height="4" rx="2"/>
+</svg>`,
+incline_press:`<svg viewBox="0 0 140 110" class="sf-anim sf-incline">
+  <line x1="25" y1="90" x2="75" y2="45" class="sf-bench-pad" stroke-width="8"/>
+  <circle class="sf-head" cx="45" cy="55" r="9"/>
+  <line class="sf-torso" x1="52" y1="60" x2="70" y2="75"/>
+  <line class="sf-thighL" x1="70" y1="75" x2="90" y2="65"/>
+  <line class="sf-shinL" x1="90" y1="65" x2="85" y2="90"/>
+  <line class="sf-armL" x1="60" y1="60" x2="65" y2="25"/>
+  <line class="sf-armR" x1="72" y1="65" x2="80" y2="30"/>
+  <rect class="sf-barh" x="50" y="20" width="45" height="4" rx="2" transform="rotate(-15 70 22)"/>
+</svg>`,
+overhead_press:`<svg viewBox="0 0 120 150" class="sf-anim sf-ohp">
+  <circle class="sf-head" cx="60" cy="30" r="9"/>
+  <line class="sf-torso" x1="60" y1="39" x2="60" y2="85"/>
+  <line class="sf-armL" x1="60" y1="45" x2="45" y2="20"/>
+  <line class="sf-armR" x1="60" y1="45" x2="75" y2="20"/>
+  <line class="sf-thighL" x1="60" y1="85" x2="52" y2="118"/>
+  <line class="sf-thighR" x1="60" y1="85" x2="68" y2="118"/>
+  <line class="sf-shinL" x1="52" y1="118" x2="52" y2="145"/>
+  <line class="sf-shinR" x1="68" y1="118" x2="68" y2="145"/>
+  <rect class="sf-barh" x="35" y="10" width="50" height="4" rx="2"/>
+</svg>`,
+row:`<svg viewBox="0 0 140 110" class="sf-anim sf-row">
+  <circle class="sf-head" cx="40" cy="45" r="9"/>
+  <line class="sf-torso" x1="47" y1="50" x2="90" y2="60"/>
+  <line class="sf-thighL" x1="90" y1="60" x2="105" y2="50"/>
+  <line class="sf-shinL" x1="105" y1="50" x2="100" y2="85"/>
+  <line class="sf-thighR" x1="90" y1="60" x2="100" y2="90"/>
+  <line class="sf-armL" x1="55" y1="52" x2="35" y2="70"/>
+  <rect class="sf-dbell" x="20" y="66" width="14" height="8" rx="3"/>
+</svg>`,
+pulldown:`<svg viewBox="0 0 120 150" class="sf-anim sf-pulldown">
+  <circle class="sf-head" cx="60" cy="35" r="9"/>
+  <line class="sf-torso" x1="60" y1="44" x2="60" y2="90"/>
+  <line class="sf-armL" x1="60" y1="50" x2="42" y2="20"/>
+  <line class="sf-armR" x1="60" y1="50" x2="78" y2="20"/>
+  <line class="sf-thighL" x1="60" y1="90" x2="52" y2="120"/>
+  <line class="sf-thighR" x1="60" y1="90" x2="68" y2="120"/>
+  <line class="sf-shinL" x1="52" y1="120" x2="52" y2="145"/>
+  <line class="sf-shinR" x1="68" y1="120" x2="68" y2="145"/>
+  <rect class="sf-barh" x="30" y="10" width="60" height="4" rx="2"/>
+</svg>`,
+push_up:`<svg viewBox="0 0 150 90" class="sf-anim sf-pushup">
+  <circle class="sf-head" cx="25" cy="50" r="9"/>
+  <line class="sf-torso" x1="34" y1="52" x2="110" y2="52"/>
+  <line class="sf-armL" x1="45" y1="52" x2="45" y2="75"/>
+  <line class="sf-armR" x1="70" y1="52" x2="70" y2="75"/>
+  <line class="sf-thighL" x1="110" y1="52" x2="135" y2="60"/>
+  <line class="sf-shinL" x1="135" y1="60" x2="140" y2="78"/>
+</svg>`,
+lunge:`<svg viewBox="0 0 140 140" class="sf-anim sf-lunge">
+  <circle class="sf-head" cx="55" cy="20" r="9"/>
+  <line class="sf-torso" x1="55" y1="29" x2="58" y2="62"/>
+  <line class="sf-armL" x1="55" y1="38" x2="40" y2="55"/>
+  <line class="sf-armR" x1="55" y1="38" x2="70" y2="55"/>
+  <line class="sf-thighL" x1="58" y1="62" x2="40" y2="85"/>
+  <line class="sf-shinL" x1="40" y1="85" x2="35" y2="120"/>
+  <line class="sf-thighR" x1="58" y1="62" x2="85" y2="80"/>
+  <line class="sf-shinR" x1="85" y1="80" x2="100" y2="115"/>
+</svg>`,
+hip_thrust:`<svg viewBox="0 0 140 100" class="sf-anim sf-hipthrust">
+  <rect x="10" y="70" width="35" height="7" rx="2" class="sf-bench-pad"/>
+  <circle class="sf-head" cx="25" cy="60" r="9"/>
+  <line class="sf-torso" x1="32" y1="63" x2="75" y2="65"/>
+  <line class="sf-thighL" x1="75" y1="65" x2="100" y2="60"/>
+  <line class="sf-shinL" x1="100" y1="60" x2="100" y2="90"/>
+  <line class="sf-armL" x1="35" y1="63" x2="20" y2="75"/>
+</svg>`,
+curl:`<svg viewBox="0 0 120 150" class="sf-anim sf-curl">
+  <circle class="sf-head" cx="60" cy="25" r="9"/>
+  <line class="sf-torso" x1="60" y1="34" x2="60" y2="85"/>
+  <line class="sf-armUpL" x1="60" y1="42" x2="45" y2="65"/>
+  <line class="sf-armLoL" x1="45" y1="65" x2="50" y2="45"/>
+  <line class="sf-thighL" x1="60" y1="85" x2="52" y2="118"/>
+  <line class="sf-thighR" x1="60" y1="85" x2="68" y2="118"/>
+  <line class="sf-shinL" x1="52" y1="118" x2="52" y2="145"/>
+  <line class="sf-shinR" x1="68" y1="118" x2="68" y2="145"/>
+  <rect class="sf-dbell2" x="43" y="41" width="14" height="7" rx="3"/>
+</svg>`,
+tricep:`<svg viewBox="0 0 120 150" class="sf-anim sf-tricep">
+  <circle class="sf-head" cx="60" cy="25" r="9"/>
+  <line class="sf-torso" x1="60" y1="34" x2="60" y2="85"/>
+  <line class="sf-armUpL" x1="60" y1="42" x2="65" y2="30"/>
+  <line class="sf-armLoL" x1="65" y1="30" x2="55" y2="60"/>
+  <line class="sf-thighL" x1="60" y1="85" x2="52" y2="118"/>
+  <line class="sf-thighR" x1="60" y1="85" x2="68" y2="118"/>
+  <line class="sf-shinL" x1="52" y1="118" x2="52" y2="145"/>
+  <line class="sf-shinR" x1="68" y1="118" x2="68" y2="145"/>
+</svg>`,
+lateral_raise:`<svg viewBox="0 0 140 150" class="sf-anim sf-lateral">
+  <circle class="sf-head" cx="70" cy="25" r="9"/>
+  <line class="sf-torso" x1="70" y1="34" x2="70" y2="85"/>
+  <line class="sf-armL" x1="70" y1="42" x2="40" y2="42"/>
+  <line class="sf-armR" x1="70" y1="42" x2="100" y2="42"/>
+  <line class="sf-thighL" x1="70" y1="85" x2="62" y2="118"/>
+  <line class="sf-thighR" x1="70" y1="85" x2="78" y2="118"/>
+  <line class="sf-shinL" x1="62" y1="118" x2="62" y2="145"/>
+  <line class="sf-shinR" x1="78" y1="118" x2="78" y2="145"/>
+</svg>`,
+plank_core:`<svg viewBox="0 0 150 80" class="sf-anim sf-plank">
+  <circle class="sf-head" cx="25" cy="35" r="9"/>
+  <line class="sf-torso" x1="34" y1="38" x2="115" y2="45"/>
+  <line class="sf-armL" x1="40" y1="38" x2="42" y2="60"/>
+  <line class="sf-thighL" x1="115" y1="45" x2="138" y2="50"/>
+</svg>`,
+calf_raise:`<svg viewBox="0 0 100 140" class="sf-anim sf-calf">
+  <circle class="sf-head" cx="50" cy="20" r="9"/>
+  <line class="sf-torso" x1="50" y1="29" x2="50" y2="70"/>
+  <line class="sf-armL" x1="50" y1="36" x2="35" y2="55"/>
+  <line class="sf-armR" x1="50" y1="36" x2="65" y2="55"/>
+  <line class="sf-thighL" x1="50" y1="70" x2="45" y2="100"/>
+  <line class="sf-thighR" x1="50" y1="70" x2="55" y2="100"/>
+  <line class="sf-shinL" x1="45" y1="100" x2="45" y2="125"/>
+  <line class="sf-shinR" x1="55" y1="100" x2="55" y2="125"/>
+  <line class="sf-heelL" x1="38" y1="130" x2="52" y2="130"/>
+  <line class="sf-heelR" x1="48" y1="130" x2="62" y2="130"/>
+</svg>`,
+leg_curl_ext:`<svg viewBox="0 0 140 100" class="sf-anim sf-legcurl">
+  <circle class="sf-head" cx="30" cy="40" r="9"/>
+  <line class="sf-torso" x1="37" y1="45" x2="90" y2="50"/>
+  <line class="sf-thighL" x1="90" y1="50" x2="115" y2="55"/>
+  <line class="sf-shinL" x1="115" y1="55" x2="110" y2="30"/>
+  <line class="sf-armL" x1="45" y1="45" x2="55" y2="65"/>
+</svg>`,
+leg_press:`<svg viewBox="0 0 150 100" class="sf-anim sf-legpress">
+  <circle class="sf-head" cx="30" cy="55" r="9"/>
+  <line class="sf-torso" x1="30" y1="64" x2="30" y2="85"/>
+  <line class="sf-thighL" x1="30" y1="70" x2="75" y2="60"/>
+  <line class="sf-shinL" x1="75" y1="60" x2="115" y2="60"/>
+  <rect class="sf-plate" x="115" y="35" width="8" height="50" rx="2"/>
+</svg>`,
+cardio_hiit:`<svg viewBox="0 0 140 130" class="sf-anim sf-hiit">
+  <circle class="sf-head" cx="60" cy="20" r="9"/>
+  <line class="sf-torso" x1="60" y1="29" x2="58" y2="65"/>
+  <line class="sf-armL" x1="59" y1="38" x2="35" y2="30"/>
+  <line class="sf-armR" x1="59" y1="38" x2="80" y2="55"/>
+  <line class="sf-thighL" x1="58" y1="65" x2="35" y2="80"/>
+  <line class="sf-shinL" x1="35" y1="80" x2="45" y2="110"/>
+  <line class="sf-thighR" x1="58" y1="65" x2="80" y2="90"/>
+  <line class="sf-shinR" x1="80" y1="90" x2="70" y2="120"/>
+</svg>`,
+fly:`<svg viewBox="0 0 140 100" class="sf-anim sf-fly">
+  <rect x="20" y="65" width="100" height="8" rx="2" class="sf-bench-pad"/>
+  <circle class="sf-head" cx="35" cy="55" r="9"/>
+  <line class="sf-torso" x1="44" y1="58" x2="95" y2="60"/>
+  <line class="sf-thighL" x1="95" y1="60" x2="105" y2="45"/>
+  <line class="sf-shinL" x1="105" y1="45" x2="100" y2="75"/>
+  <line class="sf-armL" x1="62" y1="58" x2="35" y2="35"/>
+  <line class="sf-armR" x1="72" y1="58" x2="98" y2="35"/>
+</svg>`,
+superset_circuit:`<svg viewBox="0 0 140 140" class="sf-anim sf-circuit">
+  <circle class="sf-head" cx="60" cy="20" r="9"/>
+  <line class="sf-torso" x1="60" y1="29" x2="58" y2="70"/>
+  <line class="sf-armL" x1="59" y1="40" x2="40" y2="55"/>
+  <line class="sf-armR" x1="59" y1="40" x2="78" y2="55"/>
+  <line class="sf-thighL" x1="58" y1="70" x2="48" y2="100"/>
+  <line class="sf-shinL" x1="48" y1="100" x2="48" y2="130"/>
+  <line class="sf-thighR" x1="58" y1="70" x2="68" y2="100"/>
+  <line class="sf-shinR" x1="68" y1="100" x2="68" y2="130"/>
+</svg>`,
+};
+
+function getDemoSVG(exerciseName){
+  const cat=classifyExercise(exerciseName);
+  return demoSVGs[cat]||demoSVGs.superset_circuit;
+}
+// ============================================================
+// FORGE 6-MONTH PROGRAMME — CORE DATA + ENGINE
+// ============================================================
+function mkEx(name,detail,cue,tag){return{name,detail,cue,tag};}
+function mkDay(name,label,icon,xp,exercises,notes,tip){return{name,label,icon,xp,exercises,notes,tip};}
+function mkRest(name,label,icon,notes,xp){return{name,label,icon,xp:xp||0,rest:true,notes:notes||''};}
+
+// ── PHASE 1: LEARN (Weeks 1–4) — GYM ────────────────────────
+const p1gym=[
+{label:"W1",theme:"LEARN — Day 1",phase:1,phaseLabel:"PHASE 1: LEARN",days:[
+  mkDay("MONDAY","Full Body A — Push & Squat","💪",40,[
+    mkEx("Goblet Squat","3×10 | 90s rest","Hold DB at chest. Sit between knees. Drive knees out.","compound"),
+    mkEx("Dumbbell Bench Press","3×10 | 90s rest","Feet flat. Lower to chest. Push straight up.","compound"),
+    mkEx("Dumbbell Row","3×10 each arm | 90s","One knee on bench. Pull elbow to hip.","compound"),
+    mkEx("Seated DB Shoulder Press","3×10 | 60s","Press straight up. Control the descent.","compound"),
+    mkEx("Plank","3×20 sec","Squeeze glutes and abs. Don't sag.","core"),
+  ],"<strong>WEEK 1 — FORM ONLY:</strong> Choose a weight you could do 15 reps with and stop at 10. Your only job is learning where the muscles are. Soreness tomorrow is normal.","First session ever. Pick weights that feel easy — you're teaching your body, not testing it."),
+  mkRest("TUESDAY","Walk 8,000 Steps","🚶","8,000 steps today. Eat at rest-day calories: 2,100 kcal. Keep protein at 180g.",10),
+  mkDay("WEDNESDAY","Full Body B — Pull & Hinge","🔥",40,[
+    mkEx("Romanian Deadlift (DB)","3×10 | 90s","Push hips back until hamstrings tug. Squeeze glutes at top.","compound"),
+    mkEx("Lat Pulldown","3×10 | 90s","Pull to upper chest. Lead with elbows.","compound"),
+    mkEx("Incline DB Press","3×10 | 90s","Bench at 30–45°. Control descent 2 seconds.","compound"),
+    mkEx("DB Curl","3×12 | 60s","Elbows glued to sides. No swinging.","iso"),
+    mkEx("Dead Bug","3×8 each side","Lower back pressed into floor throughout.","core"),
+  ],"<strong>HIP HINGE TIP:</strong> Stand 6 inches from a wall. Romanian deadlift — glutes should touch the wall as hips push back. That's correct form and protects your lower back for life.","The hip hinge is the most important movement pattern you'll ever learn. Go very light."),
+  mkRest("THURSDAY","Rest","😴","Full rest. Eat at 2,400 kcal."),
+  mkDay("FRIDAY","Full Body C — Lunge & Press","⚡",40,[
+    mkEx("DB Reverse Lunge","3×8 each leg | 90s","Step BACK. Knee tracks over toe.","compound"),
+    mkEx("Cable Row","3×10 | 90s","Sit tall. Pull to lower sternum.","compound"),
+    mkEx("DB Lateral Raise","3×12 | 60s","Raise to shoulder height only. Slow.","iso"),
+    mkEx("Tricep Pushdown","3×12 | 60s","Elbows pinned to sides.","iso"),
+    mkEx("Glute Bridge","3×15","Drive through heels. Hold 1 sec.","core"),
+  ],"<strong>END OF WEEK 1:</strong> Three sessions done — the hardest week of the entire 6 months, just showing up. Write down your weights.","Week 1 is 90% about showing up. Weight doesn't matter. Showing up does."),
+  mkRest("SATURDAY","LISS Cardio — 30 min","🏃","30 min brisk walk. 60–65% max heart rate.",15),
+  mkRest("SUNDAY","Full Rest","😴","8 hrs sleep. This is when your body builds muscle and burns fat."),
+]},
+{label:"W2",theme:"LEARN — Add Weight",phase:1,phaseLabel:"PHASE 1: LEARN",days:[
+  mkDay("MONDAY","Full Body A — +Weight","💪",45,[
+    mkEx("Goblet Squat","3×12 | 90s | +2.5kg","Go deeper this week.","compound"),
+    mkEx("DB Bench Press","3×10 | 90s | +2.5kg","Full range. Touch chest lightly.","compound"),
+    mkEx("DB Row","3×12 each | 90s","Pause 1 sec at top.","compound"),
+    mkEx("Seated DB Press","3×12 | 60s","Full extension overhead.","compound"),
+    mkEx("Plank","3×30 sec","10 seconds longer than last week.","core"),
+  ],"<strong>PROGRESSIVE OVERLOAD STARTS:</strong> Adding 2kg per week compounds into being 24kg stronger by Week 12. Write every weight down.","Add 2–2.5kg if last week felt easy."),
+  mkRest("TUESDAY","Walk 8,000+ Steps","🚶","Walking is your passive fat-burning machine.",10),
+  mkDay("WEDNESDAY","Full Body B — Barbell Preview","🔥",45,[
+    mkEx("Romanian Deadlift (DB)","3×12 | 90s | +2.5kg","Feel the hamstring stretch.","compound"),
+    mkEx("Lat Pulldown","3×12 | 90s | +weight","Lead with elbows.","compound"),
+    mkEx("Incline DB Press","3×10 | 90s | +2.5kg","Upper chest focus.","compound"),
+    mkEx("DB Curl","3×12 | 60s","Supinate wrist as you curl.","iso"),
+    mkEx("Bird Dog","3×10 each side","Hold 2 sec. Core still.","core"),
+  ],"","Romanian deadlift should feel more natural than Week 1."),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Full Body C — First Barbell","⚡",48,[
+    mkEx("Barbell Back Squat (bar only)","3×8 | 2 min","Bar on upper traps. Brace abs. Drive knees out.","compound"),
+    mkEx("DB Reverse Lunge","3×10 each | 90s","Increase depth this week.","compound"),
+    mkEx("Cable Row","3×12 | 90s | +weight","Chest tall. Pull to belly button.","compound"),
+    mkEx("DB Lateral Raise","3×15 | 60s","Slow and controlled.","iso"),
+    mkEx("Glute Bridge","3×20","Add 2-second hold at top.","core"),
+  ],"<strong>BARBELL DEBUT:</strong> The barbell back squat is the king of exercises. Today you use just the bar (20kg). The movement matters more than the weight right now.","Today you touch a barbell for the first time. Bar only."),
+  mkRest("SATURDAY","LISS — 35 min","🏃","35 min brisk walk or easy cycle.",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W3",theme:"LEARN — Compounds",phase:1,phaseLabel:"PHASE 1: LEARN",days:[
+  mkDay("MONDAY","Full Body A — Squat & Bench","💪",52,[
+    mkEx("Barbell Back Squat","4×8 | 2 min | add 5–10kg","Brace, breathe in, descend, drive up.","compound"),
+    mkEx("Barbell Bench Press","3×10 | 90s","Shoulder-width grip. Touch chest.","compound"),
+    mkEx("DB Row","4×10 each | 90s | +weight","Slow 3-sec descent.","compound"),
+    mkEx("DB Shoulder Press","3×12 | 60s","Full lockout.","compound"),
+    mkEx("Plank","3×40 sec","Core noticeably stronger than W1.","core"),
+  ],"<strong>COMPOUND PRIORITY:</strong> Multi-joint lifts recruit the most muscle and burn the most calories.","Two of the Big 3 lifts today."),
+  mkRest("TUESDAY","Walk + Stretch","🚶","20 min walk + 10 min stretching.",10),
+  mkDay("WEDNESDAY","Full Body B — Deadlift Day","🔥",58,[
+    mkEx("Conventional Deadlift","3×6 | 2 min | bar or 40–50kg","Hips between shoulders and knees. Bar stays on shins.","compound"),
+    mkEx("Romanian Deadlift (DB)","3×12 | 90s","Deadlift warm-up movement now.","compound"),
+    mkEx("Lat Pulldown","4×10 | 90s | +weight","Squeeze lat at bottom.","compound"),
+    mkEx("Incline DB Press","3×12 | 90s","Upper chest.","compound"),
+    mkEx("Ab Wheel / Dead Bug","3×10","Ab wheel: go as far as controllable.","core"),
+  ],"<strong>DEADLIFT DAY:</strong> The single most effective exercise for your body type — engages every posterior chain muscle.","The deadlift changes your body. Go very light — 40–50kg max."),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Full Body C — Volume","⚡",55,[
+    mkEx("Barbell Back Squat","3×10 | 90s | same weight as Mon","Higher reps = more stimulus.","compound"),
+    mkEx("Barbell Bench Press","3×10 | 90s","Control every rep.","compound"),
+    mkEx("Cable Row","3×12 | 60s","Superset with bench if you want.","compound"),
+    mkEx("Leg Press","3×12 | 90s","Feet shoulder-width.","compound"),
+    mkEx("Tricep Pushdown","3×15 | 60s","Higher reps burn more.","iso"),
+    mkEx("Bicycle Crunch","3×20","Slow and controlled.","core"),
+  ],"<strong>END OF WEEK 3:</strong> Movements feel natural now. Visual changes start around Week 4–6.","Volume day — shorter rest periods."),
+  mkRest("SATURDAY","LISS — 40 min","🏃","Try to hit 10,000 steps today.",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W4 🔄",theme:"DELOAD",phase:1,phaseLabel:"PHASE 1: LEARN",days:[
+  mkDay("MONDAY","Deload Upper","🔄",22,[
+    mkEx("Goblet Squat","2×8 | very light","Just move the joints.","compound"),
+    mkEx("DB Bench Press","2×10 | 60% of W3","Light and easy.","compound"),
+    mkEx("Lat Pulldown","2×10 | 60%","Focus on squeeze.","compound"),
+    mkEx("Plank","2×25 sec","Easy hold.","core"),
+  ],"<strong>DELOAD — DEFICIT CONTINUES:</strong> Reduce training to 60% intensity. The caloric deficit still applies.","Deload is not laziness — it's strategy."),
+  mkRest("TUESDAY","Easy Walk / Yoga","🧘","20–30 min gentle movement.",10),
+  mkDay("WEDNESDAY","Deload Lower","🔄",22,[
+    mkEx("Bodyweight Squat","2×15","Full range.","compound"),
+    mkEx("Romanian Deadlift","2×10 | 50% weight","Feel the hamstring stretch.","compound"),
+    mkEx("Glute Bridge","2×15","Gentle activation.","core"),
+  ],"",""),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Deload Full Body — Recharge","🔄",22,[
+    mkEx("DB Row","2×10 each | 60%","Easy pulls.","compound"),
+    mkEx("DB Shoulder Press","2×10 | 60%","Light and smooth.","compound"),
+    mkEx("Leg Press","2×12 | 60%","Nice and controlled.","compound"),
+    mkEx("Core Circuit","Dead Bug×8 + Bird Dog×8 + Plank 25s | 2 rounds","Light activation only.","core"),
+  ],"<strong>PHASE 2 BEGINS NEXT WEEK:</strong> You know the squat, deadlift, bench, row, press and lunge. Now we load them.","Phase 1 complete. Foundation built."),
+  mkRest("SATURDAY","Easy Walk","🚶","30 min walk.",10),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+];
+// ── PHASE 2: BUILD (Weeks 5–8) — GYM ────────────────────────
+const p2gym=[
+{label:"W5",theme:"BUILD — Load Up",phase:2,phaseLabel:"PHASE 2: BUILD",days:[
+  mkDay("MONDAY","Full Body A — Heavier","💪",60,[
+    mkEx("Barbell Back Squat","4×8 | 2 min | heavier than W3","Brace hard. Drive through whole foot.","compound"),
+    mkEx("Barbell Bench Press","4×8 | 90s | +weight","Feel the chest stretch at bottom.","compound"),
+    mkEx("Barbell Row","4×8 | 90s","Pull to belly button.","compound"),
+    mkEx("DB Shoulder Press","3×10 | 60s","Full lockout.","compound"),
+    mkEx("Cable Face Pull","3×15 | 45s","Elbows high. Rear delts + rotator cuff.","iso"),
+    mkEx("Plank","3×50 sec","Core should feel strong now.","core"),
+  ],"<strong>BUILD PHASE — FAT LOSS ACCELERATES:</strong> By Week 5 your metabolism has shifted. Stay in the deficit. Expect 0.5–1 lb fat loss this week.","Phase 2. You know the movements. Now we push the weight."),
+  mkRest("TUESDAY","Walk 10k Steps","🚶","Step target rises to 10,000. Adds ~250 kcal/day burn.",10),
+  mkDay("WEDNESDAY","Full Body B — Deadlift Push","🔥",65,[
+    mkEx("Conventional Deadlift","4×5 | 2 min | beat W3","Big breath before each rep. Hips extend last.","compound"),
+    mkEx("Romanian Deadlift","3×12 | 90s","Hamstrings burning. Good.","compound"),
+    mkEx("Lat Pulldown","4×10 | 90s | heavier","Pull to collarbone.","compound"),
+    mkEx("Incline DB Press","3×12 | 90s","Upper chest = width when lean.","compound"),
+    mkEx("Ab Wheel","3×10","Don't arch lower back.","core"),
+  ],"<strong>DEADLIFT PROGRESSION:</strong> Should be noticeably heavier than W3.","Aim to beat your Week 3 deadlift by 5–10kg."),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Full Body C — Cardio Finisher","⚡",65,[
+    mkEx("Barbell Squat","3×10 | 90s","Moderate weight, higher reps.","compound"),
+    mkEx("Barbell Bench Press","3×10 | 90s","Same weight, higher reps.","compound"),
+    mkEx("Cable Row","4×10 | 90s","Chest up. Squeeze.","compound"),
+    mkEx("Leg Press","3×15 | 60s","Pump set.","compound"),
+    mkEx("Tri Pushdown + Curl Superset","3×12 each | 45s","No rest between.","iso"),
+    mkEx("LISS Finisher","15 min brisk walk/cycle","Right after lifting — burns fat directly.","cardio"),
+  ],"<strong>CARDIO FINISHER INTRODUCED:</strong> 15 min after lifting is the most effective fat-burning window.","First cardio finisher today."),
+  mkRest("SATURDAY","LISS — 40 min","🏃","Should be seeing body composition changes by now.",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W6",theme:"BUILD — Beat Last Week",phase:2,phaseLabel:"PHASE 2: BUILD",days:[
+  mkDay("MONDAY","Full Body A — +2.5kg","💪",65,[
+    mkEx("Barbell Back Squat","4×8 | +2.5kg vs W5","Stay upright.","compound"),
+    mkEx("Barbell Bench Press","4×8 | +2.5kg vs W5","Retract scapula before unracking.","compound"),
+    mkEx("Barbell Row","4×8 | +2.5kg","Explosive pull.","compound"),
+    mkEx("DB Shoulder Press","3×12 | +1–2kg","Fully extend overhead.","compound"),
+    mkEx("Cable Face Pull","3×20","More reps.","iso"),
+    mkEx("Plank","3×60 sec","60 seconds.","core"),
+  ],"<strong>WEEK 6 MILESTONE:</strong> Meaningfully heavier on every lift. You've probably lost 4–6 lbs.","Add 2.5kg to everything you can."),
+  mkRest("TUESDAY","Walk 10k Steps","🚶","",10),
+  mkDay("WEDNESDAY","Full Body B — Heavy Deadlift","🔥",70,[
+    mkEx("Conventional Deadlift","4×5 | +5kg vs W5","Lockout at top — glutes hard.","compound"),
+    mkEx("Romanian Deadlift","4×10 | +weight","3-sec eccentric.","compound"),
+    mkEx("Lat Pulldown","4×10 | +weight","Full range.","compound"),
+    mkEx("Incline DB Press","4×10 | +2kg","Pause 1 sec at chest.","compound"),
+    mkEx("Hanging Knee Raise","3×12","No swinging.","core"),
+  ],"",""),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Full Body C — HIIT Intro","⚡",75,[
+    mkEx("Barbell Squat","3×10 | moderate","Set the tone.","compound"),
+    mkEx("Barbell Bench Press","3×10","Volume work.","compound"),
+    mkEx("Cable Row","3×12","Last strength set.","compound"),
+    mkEx("Leg Press","3×15","Pump and burn.","compound"),
+    mkEx("HIIT Finisher","6 rounds: 30s fast walk/jog / 30s rest","By round 4 should feel hard.","cardio"),
+    mkEx("Leg Raise","3×12","Controlled.","core"),
+  ],"<strong>HIIT INTRODUCED:</strong> Glycogen is depleted from lifting, so intervals go straight to fat.","First HIIT session. 6 rounds only."),
+  mkRest("SATURDAY","LISS — 40 min","🏃","",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W7",theme:"BUILD — Volume Push",phase:2,phaseLabel:"PHASE 2: BUILD",days:[
+  mkDay("MONDAY","Full Body A — 5×5 Strength","💪",72,[
+    mkEx("Barbell Back Squat","5×5 | heavy | 2.5 min rest","Should feel challenging but achievable.","compound"),
+    mkEx("Barbell Bench Press","5×5 | heavy | 2 min","Last rep genuinely hard.","compound"),
+    mkEx("Barbell Row","4×8 | 90s | +weight","Beat last week.","compound"),
+    mkEx("DB Shoulder Press","4×10 | 60s","Increasing reps now.","compound"),
+    mkEx("Cable Face Pull","3×20","Rear delt health.","iso"),
+    mkEx("Plank + Hip Dip","3×30 dips","Dip hips side to side.","core"),
+  ],"<strong>5×5 PROTOCOL BEGINS:</strong> The most proven beginner strength protocol ever created.","5×5 on squats and bench today."),
+  mkDay("TUESDAY","Lower Accessory Day","🦵",60,[
+    mkEx("Barbell Deadlift","4×4 | HEAVY | 3 min","Max effort day.","compound"),
+    mkEx("Walking DB Lunge","3×10 each | 90s","Weighted.","compound"),
+    mkEx("Leg Press","3×15 | 60s","Pump set.","compound"),
+    mkEx("Leg Curl (Machine)","3×12 | 60s","Hamstring isolation.","iso"),
+    mkEx("Standing Calf Raise","4×20 | 45s","Full range.","iso"),
+  ],"<strong>LOWER ACCESSORY:</strong> 4th session — more volume boosts testosterone, accelerating fat loss everywhere.","4th session this week — lower body accessory."),
+  mkRest("WEDNESDAY","Rest","😴"),
+  mkDay("THURSDAY","Full Body B — Pulls","🔥",72,[
+    mkEx("Conventional Deadlift","3×5 | maintain heavy | 2 min","Touch and go style.","compound"),
+    mkEx("Pull-Up / Assisted","4×5–8 | 2 min","This will be unassisted by Week 16.","compound"),
+    mkEx("Cable Row","4×10 | 90s","Full retraction.","compound"),
+    mkEx("Incline DB Press","4×10 | 90s | +weight","Keep pressing.","compound"),
+    mkEx("Rear Delt Fly","3×15 | 45s","Rear delt development.","iso"),
+    mkEx("Ab Wheel","3×12","More reps than W5.","core"),
+  ],"",""),
+  mkDay("FRIDAY","Full Body C — HIIT Extended","⚡",78,[
+    mkEx("Barbell Squat","3×10 | 90s","Volume finish for the week.","compound"),
+    mkEx("Barbell Bench Press","3×10 | 90s","","compound"),
+    mkEx("DB Shoulder Press","3×12 | 60s","","compound"),
+    mkEx("Tricep Dip","3×10 | 60s","Add weight belt if easy.","iso"),
+    mkEx("EZ Bar Curl","3×12 | 60s","Bicep volume.","iso"),
+    mkEx("HIIT Finisher","8 rounds: 30s run / 30s walk","2 more rounds than W6.","cardio"),
+    mkEx("Hanging Leg Raise","3×12","Core strength increasing.","core"),
+  ],"<strong>8-ROUND HIIT:</strong> By Week 10 we hit 12 rounds.","HIIT grows by 2 rounds each week."),
+  mkRest("SATURDAY","LISS — 40 min","🏃","",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W8 🔄",theme:"DELOAD",phase:2,phaseLabel:"PHASE 2: BUILD",days:[
+  mkDay("MONDAY","Deload Upper","🔄",25,[
+    mkEx("Barbell Squat","3×5 | 60% weight","Light and fast.","compound"),
+    mkEx("DB Bench Press","3×8 | 60%","","compound"),
+    mkEx("Cable Row","3×10 | 60%","","compound"),
+    mkEx("Face Pull","3×15","","iso"),
+  ],"<strong>DELOAD — 8 WEEKS DONE:</strong> You've completed 2 full phases. Take photos this weekend.","Deload week. 60% weight and effort."),
+  mkRest("TUESDAY","Walk / Yoga","🧘","Easy movement only.",10),
+  mkDay("WEDNESDAY","Deload Lower","🔄",25,[
+    mkEx("Deadlift","3×3 | 60% weight","Just feel the movement.","compound"),
+    mkEx("Goblet Squat","3×10 | light","Full range.","compound"),
+    mkEx("Calf Raise","3×15","","iso"),
+  ],"",""),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Deload Full Body","🔄",25,[
+    mkEx("Lat Pulldown","3×10 | 60%","","compound"),
+    mkEx("DB Shoulder Press","3×10 | 60%","","compound"),
+    mkEx("Leg Press","3×12 | 60%","","compound"),
+    mkEx("Plank","2×40 sec","","core"),
+  ],"<strong>PHASE 3 PREVIEW:</strong> Upper/Lower split next week. Volume doubles per muscle group.","Phase 2 complete. Upper/Lower split starts next week."),
+  mkRest("SATURDAY","Easy Walk","🚶","",10),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+];
+// ── PHASE 3: SHRED (Weeks 9–12) — GYM ───────────────────────
+const p3gym=[
+{label:"W9",theme:"SHRED — Upper/Lower",phase:3,phaseLabel:"PHASE 3: SHRED",days:[
+  mkDay("MONDAY","Upper A — Strength","💪",75,[
+    mkEx("Barbell Bench Press","5×5 | heavy | 2 min","Beat Phase 2 weights.","compound"),
+    mkEx("Barbell Row","5×5 | heavy | 2 min","Match bench intensity.","compound"),
+    mkEx("Overhead Barbell Press","4×6 | 90s","New exercise.","compound"),
+    mkEx("Pull-Up","4×6–8 | 90s","Unassisted if possible.","compound"),
+    mkEx("DB Lateral Raise","4×15 | 45s","Shoulder width and density.","iso"),
+    mkEx("Face Pull","3×20 | 45s","Rotator cuff health.","iso"),
+    mkEx("Cable Crunch","4×20 | 45s","Weighted ab work.","core"),
+  ],"<strong>PHASE 3 — SHRED BEGINS:</strong> Upper/Lower split means each muscle group gets 2 sessions/week instead of 1. Calorie target drops to 2,300 training days from this week.","Phase 3. Upper/Lower split."),
+  mkDay("TUESDAY","Lower A — Strength","🦵",75,[
+    mkEx("Barbell Back Squat","5×5 | HEAVY | 2.5 min","Heaviest squat so far.","compound"),
+    mkEx("Romanian Deadlift","4×8 | 90s","Heavy.","compound"),
+    mkEx("Walking DB Lunge","3×12 each | 90s","Weighted. Full depth.","compound"),
+    mkEx("Leg Press","3×15 | 60s","Pump set.","compound"),
+    mkEx("Nordic Hamstring Curl","3×6 | 90s","Extremely hard. Start partial.","iso"),
+    mkEx("Calf Raise","5×20 | 45s","","iso"),
+  ],"<strong>LOWER STRENGTH DAY:</strong> Leg training is your most powerful fat-burning tool.","Lower strength day. Heaviest squat yet."),
+  mkRest("WEDNESDAY","Rest / 10k Steps","🚶","Keep the steps. 10,000 minimum.",10),
+  mkDay("THURSDAY","Upper B — Hypertrophy","🔥",78,[
+    mkEx("Incline DB Press","4×10–12 | 90s","Volume for upper chest.","compound"),
+    mkEx("Wide-Grip Cable Row","4×10–12 | 90s","Different angle to Monday.","compound"),
+    mkEx("Seated DB Press","4×10 | 60s","Shoulder hypertrophy.","compound"),
+    mkEx("Chest Cable Fly","3×15 | 45s","Stretch and squeeze.","iso"),
+    mkEx("Straight Arm Pulldown","3×15 | 45s","Feel the lat contracting.","iso"),
+    mkEx("EZ Bar Curl","4×12 | 60s","Bicep volume day.","iso"),
+    mkEx("Skull Crusher","4×12 | 60s","Tricep volume day.","iso"),
+  ],"<strong>HYPERTROPHY UPPER:</strong> Monday heavy/low reps. Thursday moderate/higher reps — optimal for simultaneous fat loss and muscle building.","Hypertrophy focus today."),
+  mkDay("FRIDAY","Lower B — Hypertrophy + HIIT","⚡",85,[
+    mkEx("Bulgarian Split Squat","4×10 each | 90s | WEIGHTED","Rear foot on bench. Full depth.","compound"),
+    mkEx("Romanian Deadlift","4×12 | 90s","Volume after strength.","compound"),
+    mkEx("Hack Squat","4×10–12 | 90s","Quad-dominant.","compound"),
+    mkEx("Leg Curl","4×12 | 60s","Hamstring isolation.","iso"),
+    mkEx("Leg Extension","3×15 | 45s","Quad isolation.","iso"),
+    mkEx("HIIT Finisher","10 rounds: 20s max effort / 40s rest","10 rounds of max sprint effort.","cardio"),
+  ],"<strong>HIIT JUMPS TO 10 ROUNDS:</strong> The single most effective fat-burning activity you can do.","Lower hypertrophy + 10-round HIIT."),
+  mkRest("SATURDAY","LISS — 40 min + Stretch","🏃","Full body stretch post-walk.",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W10",theme:"SHRED — Push Harder",phase:3,phaseLabel:"PHASE 3: SHRED",days:[
+  mkDay("MONDAY","Upper A — Beat Last Week","💪",80,[
+    mkEx("Barbell Bench Press","5×5 | +2.5kg vs W9","Every week heavier.","compound"),
+    mkEx("Barbell Row","5×5 | +2.5kg","","compound"),
+    mkEx("Overhead Press","4×6 | +weight","Improving fast now.","compound"),
+    mkEx("Pull-Up","4×8 | 2 min","Almost bodyweight unassisted.","compound"),
+    mkEx("Lateral Raise","4×15 | 45s","","iso"),
+    mkEx("Face Pull","4×20 | 45s","Shoulder health priority.","iso"),
+    mkEx("Cable Crunch","4×20 | 45s","","core"),
+  ],"<strong>WEEK 10:</strong> 10 weeks in. Not the same person who started.","Beat every weight from last week."),
+  mkDay("TUESDAY","Lower A — Squat PR","🦵",80,[
+    mkEx("Barbell Back Squat","5×5 | Push for PR","Heaviest squat of your life.","compound"),
+    mkEx("Romanian Deadlift","4×8 | +weight","","compound"),
+    mkEx("Walking Lunge","3×12 each | +weight","","compound"),
+    mkEx("Leg Press","4×15 | 60s","More sets.","compound"),
+    mkEx("Leg Curl","4×12 | 60s","","iso"),
+    mkEx("Calf Raise","5×20","","iso"),
+  ],"","Squat PR attempt today."),
+  mkRest("WEDNESDAY","10k Steps","🚶","",10),
+  mkDay("THURSDAY","Upper B — Volume Max","🔥",82,[
+    mkEx("Incline DB Press","4×12 | +weight","More reps and weight.","compound"),
+    mkEx("Cable Row","4×12 | +weight","","compound"),
+    mkEx("Arnold Press","4×10 | 60s","Rotate palms in to out as you press.","compound"),
+    mkEx("Pec Deck","3×15","Full chest contraction.","iso"),
+    mkEx("Straight Arm Pulldown","4×15","Lat detail.","iso"),
+    mkEx("Barbell Curl","4×10 | 60s","Heavier bicep work.","iso"),
+    mkEx("Overhead Tricep Extension","4×12 | 60s","Long head tricep.","iso"),
+  ],"",""),
+  mkDay("FRIDAY","Lower B + HIIT 12 rounds","⚡",88,[
+    mkEx("Bulgarian Split Squat","4×12 each | +weight","Beat W9.","compound"),
+    mkEx("Deadlift","4×4 | HEAVY | 3 min","You can handle it now.","compound"),
+    mkEx("Hack Squat","3×12","","compound"),
+    mkEx("Leg Curl","3×12","","iso"),
+    mkEx("HIIT Finisher","12 rounds: 20s sprint / 40s rest","Maximum effort every sprint.","cardio"),
+    mkEx("Ab Circuit","20 leg raises + 20 bicycle crunches + 60s plank | 3 rounds","","core"),
+  ],"<strong>12-ROUND HIIT:</strong> Metabolic rate stays elevated for 24+ hours.","12-round HIIT maximum."),
+  mkRest("SATURDAY","LISS 45 min","🏃","",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W11",theme:"SHRED — Definition",phase:3,phaseLabel:"PHASE 3: SHRED",days:[
+  mkDay("MONDAY","Upper A — Heavy Compound","💪",82,[
+    mkEx("Barbell Bench Press","5×5 | max effort","Every rep fighting.","compound"),
+    mkEx("Weighted Pull-Up","4×5 | add weight plate","Weight belt or plate between legs.","compound"),
+    mkEx("Overhead Press","4×6 | heavy","","compound"),
+    mkEx("Pendlay Row","4×6 | heavy","Bar rests on floor between reps.","compound"),
+    mkEx("Lateral Raise","4×20 | drop set on last","Drop weight after failure.","iso"),
+    mkEx("Face Pull","3×25","","iso"),
+    mkEx("Hanging Leg Raise","3×15","","core"),
+  ],"<strong>WEIGHTED PULL-UP INTRODUCED:</strong> The most impressive upper body metric.","Weighted pull-ups. Add a plate on a belt if doing bodyweight."),
+  mkDay("TUESDAY","Lower A — Strength Peak","🦵",82,[
+    mkEx("Barbell Squat","5×5 | near-max","Your strongest squat ever.","compound"),
+    mkEx("Deadlift","4×3 | HEAVY","Low reps, max weight.","compound"),
+    mkEx("Leg Press","4×15 | 60s","Volume after heavy.","compound"),
+    mkEx("Nordic Hamstring Curl","3×8 | 90s","Getting stronger.","iso"),
+    mkEx("Calf Raise","5×20 | 45s","","iso"),
+  ],"",""),
+  mkRest("WEDNESDAY","10k Steps + Mobility","🚶","15 min mobility work.",10),
+  mkDay("THURSDAY","Upper B — Pump Focus","🔥",82,[
+    mkEx("Incline DB Press","4×12 | 90s","","compound"),
+    mkEx("Cable Row — 3 grip variations","3×10 each grip | 60s","Close, medium, wide grip.","compound"),
+    mkEx("DB Lateral Raise superset Face Pull","4×15+15 | 45s","No rest between.","iso"),
+    mkEx("Chest Fly Cable","3×15","Full stretch at bottom.","iso"),
+    mkEx("Incline DB Curl","3×12","Different angle for peak.","iso"),
+    mkEx("Cable Pushdown + Overhead Extension superset","3×12+12","","iso"),
+  ],"<strong>SUPERSETS FOR FAT BURNING:</strong> Burns significantly more calories per session.","Superset-heavy session."),
+  mkDay("FRIDAY","Lower B — Finisher Week","⚡",90,[
+    mkEx("Bulgarian Split Squat","5×10 each | heavy","5 sets now.","compound"),
+    mkEx("Romanian Deadlift","4×12 | heavy","","compound"),
+    mkEx("Leg Press — Rest-Pause","3 sets to failure | rest 15s | continue","Go to failure, rest 15s, continue.","compound"),
+    mkEx("Leg Curl","4×12","","iso"),
+    mkEx("HIIT Finisher","12 rounds: 25s / 35s","Longer work interval.","cardio"),
+    mkEx("Full Ab Circuit","3 rounds: 20 leg raises + 30 bicycle crunches + 60s plank + 20 Russian twists","","core"),
+  ],"",""),
+  mkRest("SATURDAY","LISS 45 min","🏃","",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W12 🔄",theme:"DELOAD",phase:3,phaseLabel:"PHASE 3: SHRED",days:[
+  mkDay("MONDAY","Deload Upper","🔄",28,[
+    mkEx("Barbell Bench Press","3×5 | 60%","Light and controlled.","compound"),
+    mkEx("Cable Row","3×10 | 60%","","compound"),
+    mkEx("DB Shoulder Press","3×8 | 60%","","compound"),
+    mkEx("Face Pull","2×20","","iso"),
+  ],"<strong>DELOAD — PHASE 3 COMPLETE:</strong> 12 weeks done. Take progress photos. Phase 4 starts next week with Push/Pull/Legs.","12 weeks done. Photo comparison time."),
+  mkRest("TUESDAY","Walk / Yoga","🧘","Full recovery.",10),
+  mkDay("WEDNESDAY","Deload Lower","🔄",28,[
+    mkEx("Goblet Squat","3×8 | light","","compound"),
+    mkEx("Romanian Deadlift","3×8 | 60%","","compound"),
+    mkEx("Leg Curl","2×12 | 60%","","iso"),
+    mkEx("Calf Raise","3×15","","iso"),
+  ],"",""),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Deload — Full Body Light","🔄",28,[
+    mkEx("Pull-Up","3×5 | easy","","compound"),
+    mkEx("DB Press","3×10 | 60%","","compound"),
+    mkEx("Lat Pulldown","3×10 | 60%","","compound"),
+    mkEx("Core Circuit","Plank 40s + Dead Bug×8 + Bird Dog×8 | 2 rounds","","core"),
+  ],"<strong>READY FOR PHASE 4:</strong> Push/Pull/Legs split begins next week.","Phase 4 preview: Push/Pull/Legs."),
+  mkRest("SATURDAY","Easy Walk","🚶","",10),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+];
+// ── PHASE 4: INTERMEDIATE (Weeks 13–16) — GYM ───────────────
+const p4gym=[
+{label:"W13",theme:"INTERMEDIATE — PPL",phase:4,phaseLabel:"PHASE 4: INTERMEDIATE",days:[
+  mkDay("MONDAY","Push Day — Chest/Shoulders/Triceps","💪",85,[
+    mkEx("Barbell Bench Press","5×5 | heavy | 2.5 min","Beat Phase 3 weight.","compound"),
+    mkEx("Incline Barbell Press","4×8 | 90s","Upgrade from DB.","compound"),
+    mkEx("Overhead Barbell Press","4×8 | 90s","","compound"),
+    mkEx("Cable Fly","4×15 | 45s","Full chest stretch.","iso"),
+    mkEx("Lateral Raise","4×20 | 45s","","iso"),
+    mkEx("Tricep Dip — weighted","4×10 | 60s","Add plate if bodyweight easy.","iso"),
+    mkEx("Overhead Tricep Extension","3×12 | 45s","","iso"),
+  ],"<strong>PUSH/PULL/LEGS:</strong> All pushing muscles in one session — push them harder, recover more fully before the next push session.","Phase 4 — PPL split. Push day."),
+  mkDay("TUESDAY","Pull Day — Back/Biceps","🔥",85,[
+    mkEx("Conventional Deadlift","4×4 | HEAVY | 3 min","Your strongest deadlift yet.","compound"),
+    mkEx("Weighted Pull-Up","4×6 | 2 min","Increase belt weight.","compound"),
+    mkEx("Barbell Row","4×8 | 90s","","compound"),
+    mkEx("Seated Cable Row","4×10 | 90s","Full stretch and retraction.","compound"),
+    mkEx("Face Pull","4×20 | 45s","","iso"),
+    mkEx("Barbell Curl","4×10 | 60s","","iso"),
+    mkEx("Hammer Curl","3×12 | 60s","Brachialis and forearm.","iso"),
+  ],"<strong>PULL DAY:</strong> Back is your biggest upper body muscle group — developed it changes your silhouette.","Pull day. Heavy deadlift first."),
+  mkRest("WEDNESDAY","Active Recovery / 10k Steps","🚶","Walk, stretch, mobility. No lifting.",10),
+  mkDay("THURSDAY","Legs Day","🦵",90,[
+    mkEx("Barbell Back Squat","5×5 | HEAVY | 2.5 min","Heaviest squat of the programme.","compound"),
+    mkEx("Romanian Deadlift","4×10 | 90s | heavy","","compound"),
+    mkEx("Hack Squat","4×10 | 90s","","compound"),
+    mkEx("Walking Lunge","3×12 each | 90s","","compound"),
+    mkEx("Leg Curl","4×12 | 60s","","iso"),
+    mkEx("Leg Extension","4×15 | 60s","","iso"),
+    mkEx("Calf Raise","5×20 | 45s","","iso"),
+    mkEx("Ab Circuit","3 rounds: 20 hanging leg raises + 30 bicycle crunches + 60s plank","","core"),
+  ],"<strong>LEG DAY IMPORTANCE:</strong> Legs are 40% of your muscle mass. Heavy leg training releases the most testosterone.","Leg day. Heaviest leg session of the programme."),
+  mkDay("FRIDAY","Push Day B — Volume","💪",85,[
+    mkEx("Incline DB Press","4×12 | 90s","Volume for upper chest.","compound"),
+    mkEx("Flat DB Press","4×12 | 90s","","compound"),
+    mkEx("DB Shoulder Press","4×12 | 60s","","compound"),
+    mkEx("Cable Chest Fly","3×15 | 45s","","iso"),
+    mkEx("Cable Lateral Raise","4×15 | 45s","Constant tension.","iso"),
+    mkEx("Tricep Pushdown","3×15 | 45s","","iso"),
+    mkEx("HIIT Finisher","10 rounds: 30s / 30s","Built back after deload.","cardio"),
+  ],"","Second push session — higher reps and calorie burn."),
+  mkRest("SATURDAY","LISS — 45 min","🏃","",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W14",theme:"INTERMEDIATE — Progress",phase:4,phaseLabel:"PHASE 4: INTERMEDIATE",days:[
+  mkDay("MONDAY","Push — +Weight","💪",88,[
+    mkEx("Barbell Bench Press","5×5 | +2.5kg","Relentless progression.","compound"),
+    mkEx("Incline Barbell Press","4×8 | +weight","","compound"),
+    mkEx("OHP","4×8 | +weight","","compound"),
+    mkEx("Cable Fly","4×15","","iso"),
+    mkEx("Lateral Raise","5×20","5 sets now.","iso"),
+    mkEx("Weighted Dip","4×10 | +weight","","iso"),
+  ],"","Add weight to everything from W13."),
+  mkDay("TUESDAY","Pull — Deadlift PR","🔥",88,[
+    mkEx("Deadlift","4×3 | MAXIMUM EFFORT | 3 min","New 3-rep max attempt.","compound"),
+    mkEx("Weighted Pull-Up","4×6 | +weight","","compound"),
+    mkEx("Barbell Row","5×8 | +weight","5 sets now.","compound"),
+    mkEx("Face Pull","4×25","","iso"),
+    mkEx("Incline DB Curl","4×12","","iso"),
+    mkEx("Cable Curl","3×15","Constant tension.","iso"),
+  ],"","Deadlift PR attempt."),
+  mkRest("WEDNESDAY","10k Steps + Mobility","🚶","",10),
+  mkDay("THURSDAY","Legs — Volume","🦵",92,[
+    mkEx("Barbell Squat","5×8 | 90s","Higher reps, more volume.","compound"),
+    mkEx("Romanian Deadlift","4×12 | +weight","","compound"),
+    mkEx("Bulgarian Split Squat","4×10 each | heavy","","compound"),
+    mkEx("Leg Press","4×15 | 60s","","compound"),
+    mkEx("Leg Curl","4×15 | 60s","More reps.","iso"),
+    mkEx("Calf Raise","6×20 | 45s","6 sets.","iso"),
+  ],"","Leg volume day."),
+  mkDay("FRIDAY","Push + HIIT 12","⚡",90,[
+    mkEx("Incline DB Press","4×12 | 90s","","compound"),
+    mkEx("DB Shoulder Press","4×12 | 60s","","compound"),
+    mkEx("Chest Fly","4×15 | 45s","","iso"),
+    mkEx("Lateral Raise Drop Set","4 × to failure + drop + continue","","iso"),
+    mkEx("Tricep Circuit","Pushdown + Dip + Extension | 3×10 each","Tri-set. Brutal.","iso"),
+    mkEx("HIIT Finisher","12 rounds: 30s / 30s","Max effort.","cardio"),
+  ],"","Push + 12-round HIIT."),
+  mkRest("SATURDAY","LISS — 45 min","🏃","",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W15",theme:"INTERMEDIATE — Intensity",phase:4,phaseLabel:"PHASE 4: INTERMEDIATE",days:[
+  mkDay("MONDAY","Push — Peak Strength","💪",92,[
+    mkEx("Barbell Bench Press","5×3 | NEAR MAX | 3 min","Heaviest bench ever.","compound"),
+    mkEx("Incline Barbell Press","4×6 | heavy","","compound"),
+    mkEx("OHP","4×6 | heavy","","compound"),
+    mkEx("Cable Fly — 3 angles","3×12 each: low/mid/high","Every angle.","iso"),
+    mkEx("Lateral Raise","5×20","","iso"),
+    mkEx("Weighted Dip","5×8","","iso"),
+  ],"","Heavy push day."),
+  mkDay("TUESDAY","Pull — Width + Thickness","🔥",92,[
+    mkEx("Weighted Pull-Up","5×5 | heavy","Pull-up progression.","compound"),
+    mkEx("Deadlift","4×5 | submaximal | 2 min","Controllable but heavy.","compound"),
+    mkEx("T-Bar Row","4×8","New exercise for thickness.","compound"),
+    mkEx("Lat Pulldown — wide grip","4×10","Width.","compound"),
+    mkEx("Face Pull","4×25","","iso"),
+    mkEx("21s Bicep Curl","4 sets","7 bottom half + 7 top half + 7 full reps.","iso"),
+  ],"<strong>21s CURL:</strong> One of the most effective bicep volume techniques.","Pull day — width and thickness focus."),
+  mkRest("WEDNESDAY","10k Steps","🚶","",10),
+  mkDay("THURSDAY","Legs — Strength + Isolation","🦵",95,[
+    mkEx("Barbell Squat","5×5 | heavy","","compound"),
+    mkEx("Deadlift","3×3 | very heavy","Second heavy deadlift of the week.","compound"),
+    mkEx("Hack Squat","4×10","","compound"),
+    mkEx("Leg Press — Rest Pause","3 sets to failure","Rest-pause technique.","compound"),
+    mkEx("Leg Curl","5×12","5 sets.","iso"),
+    mkEx("Leg Extension","4×15","","iso"),
+    mkEx("Calf Raise","5×20","","iso"),
+  ],"","Strongest leg session yet."),
+  mkDay("FRIDAY","Push Pump + HIIT","⚡",92,[
+    mkEx("DB Press","4×15 | 60s","Higher rep pump.","compound"),
+    mkEx("DB Shoulder Press","4×15 | 60s","","compound"),
+    mkEx("Chest / Shoulder Superset","4×12+12","DB fly + lateral raise.","iso"),
+    mkEx("Tricep Giant Set","Pushdown + Dip + Kickback | 3 rounds","No rest.","iso"),
+    mkEx("HIIT Finisher","12 rounds: 30s / 30s","Maximum effort.","cardio"),
+    mkEx("Full Ab Circuit","4 rounds","20 hanging leg raises + 30 bicycle crunches + 60s plank","core"),
+  ],"","High volume pump session + HIIT."),
+  mkRest("SATURDAY","LISS 45 min","🏃","",15),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W16 🔄",theme:"DELOAD",phase:4,phaseLabel:"PHASE 4: INTERMEDIATE",days:[
+  mkDay("MONDAY","Deload Push","🔄",30,[
+    mkEx("Bench Press","3×5 | 60%","Light.","compound"),
+    mkEx("OHP","3×6 | 60%","","compound"),
+    mkEx("Cable Fly","2×12","Easy.","iso"),
+  ],"<strong>DELOAD — 16 WEEKS:</strong> 4 months of consistent training. Phase 5 introduces dedicated cardio.","16 weeks done. Photo time. Rest."),
+  mkRest("TUESDAY","Walk / Yoga","🧘","",10),
+  mkDay("WEDNESDAY","Deload Pull","🔄",30,[
+    mkEx("Pull-Up","3×5 | easy","","compound"),
+    mkEx("Cable Row","3×8 | 60%","","compound"),
+    mkEx("Face Pull","2×20","","iso"),
+  ],"",""),
+  mkRest("THURSDAY","Rest","😴"),
+  mkDay("FRIDAY","Deload Legs","🔄",30,[
+    mkEx("Goblet Squat","3×10 | light","","compound"),
+    mkEx("Romanian Deadlift","3×8 | 60%","","compound"),
+    mkEx("Leg Press","3×12 | 60%","","compound"),
+  ],"<strong>PHASE 5 PREVIEW:</strong> 4x lifting + 2x dedicated cardio. You're approaching intermediate level.","Phase 5 begins next week. Dedicated cardio added."),
+  mkRest("SATURDAY","Easy Walk","🚶","",10),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+];
+// ── PHASE 5: STRENGTH (Weeks 17–20) — GYM ───────────────────
+const p5gym=[
+{label:"W17",theme:"STRENGTH — PPL+Cardio",phase:5,phaseLabel:"PHASE 5: STRENGTH",days:[
+  mkDay("MONDAY","Push — Max Strength","💪",95,[
+    mkEx("Barbell Bench Press","5×3 | max effort | 3 min","Absolute maximum weight with good form.","compound"),
+    mkEx("Incline Barbell Press","4×6 | heavy","","compound"),
+    mkEx("OHP","4×6 | heavy","","compound"),
+    mkEx("Cable Fly superset Lateral Raise","4×12+15 | 60s","No rest between.","iso"),
+    mkEx("Weighted Dip","4×8 | heavy","","iso"),
+    mkEx("Tricep Pushdown + Extension superset","4×12+12","","iso"),
+  ],"<strong>PHASE 5 — STRENGTH FOCUS:</strong> 3-rep sets build maximal strength. Combined with 2 dedicated cardio days, fat loss and strength peak simultaneously.","Phase 5. Strength focus — heavier than ever."),
+  mkDay("TUESDAY","Pull — Back Thickness","🔥",95,[
+    mkEx("Deadlift","5×3 | MAXIMUM | 3 min","Biggest deadlift numbers of your life.","compound"),
+    mkEx("Weighted Pull-Up","5×5 | heavy","","compound"),
+    mkEx("T-Bar Row","4×8 | +weight","","compound"),
+    mkEx("Barbell Row","4×8 | +weight","","compound"),
+    mkEx("Face Pull","5×25","","iso"),
+    mkEx("Barbell Curl","5×8 | heavy","Heavy bicep work.","iso"),
+  ],"<strong>BIGGEST DEADLIFT NUMBERS:</strong> From 40–50kg in Week 3 to 120–160kg possible by now. That's 17 weeks of progressive overload.","Deadlift day. Maximum weight."),
+  mkRest("WEDNESDAY","DEDICATED CARDIO — 40 min","🏃","Steady-state cardio. NOT a rest day. 65–70% max HR. Burn 300–400 kcal.",20),
+  mkDay("THURSDAY","Legs — Strength Focus","🦵",98,[
+    mkEx("Barbell Squat","5×3 | MAXIMUM | 3 min","Heaviest squat of your life.","compound"),
+    mkEx("Romanian Deadlift","4×10 | heavy","","compound"),
+    mkEx("Hack Squat","4×10","","compound"),
+    mkEx("Bulgarian Split Squat","3×10 each | heavy","","compound"),
+    mkEx("Leg Curl","5×12","","iso"),
+    mkEx("Leg Extension","4×15","","iso"),
+    mkEx("Calf Raise","6×20","","iso"),
+  ],"","Heaviest squat session of the programme."),
+  mkDay("FRIDAY","Push — Volume","💪",92,[
+    mkEx("Incline DB Press","5×12 | 90s","Volume after strength week.","compound"),
+    mkEx("Flat DB Press","4×12 | 90s","","compound"),
+    mkEx("DB Shoulder Press","4×12 | 60s","","compound"),
+    mkEx("3-angle Cable Fly","3×12 each angle","","iso"),
+    mkEx("Cable Lateral Raise","5×15","Constant tension.","iso"),
+    mkEx("Tricep Giant Set","4 rounds","","iso"),
+    mkEx("HIIT Finisher","12 rounds: 30s / 30s","","cardio"),
+  ],"","Volume push + HIIT."),
+  mkRest("SATURDAY","DEDICATED CARDIO #2 — 45 min","🏃","Second cardio session. Extra 350–400 kcal burned.",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W18",theme:"STRENGTH — Build",phase:5,phaseLabel:"PHASE 5: STRENGTH",days:[
+  mkDay("MONDAY","Push — +Weight","💪",98,[
+    mkEx("Bench Press","5×3 | +2.5kg vs W17","Progressive.","compound"),
+    mkEx("Incline Barbell Press","4×6 | +weight","","compound"),
+    mkEx("OHP","4×5 | +weight","","compound"),
+    mkEx("Chest/Shoulder Superset","5×12+15","","iso"),
+    mkEx("Weighted Dip","5×8","","iso"),
+    mkEx("Tricep superset","4 rounds","","iso"),
+  ],"","Beat W17 on every main lift."),
+  mkDay("TUESDAY","Pull — Width Focus","🔥",98,[
+    mkEx("Weighted Pull-Up","5×5 | +weight","","compound"),
+    mkEx("Deadlift","4×4 | submaximal","High volume deadlift.","compound"),
+    mkEx("Wide-Grip Lat Pulldown","4×10","Back width.","compound"),
+    mkEx("T-Bar Row","5×8","","compound"),
+    mkEx("Straight Arm Pulldown","4×15","","iso"),
+    mkEx("21s Curl","4 sets","","iso"),
+  ],"","Pull day — width focus."),
+  mkRest("WEDNESDAY","CARDIO — 40 min","🏃","300–400 kcal.",20),
+  mkDay("THURSDAY","Legs — Volume Peak","🦵",100,[
+    mkEx("Barbell Squat","5×5 | heavy","Back to 5 reps.","compound"),
+    mkEx("Deadlift","4×5 | heavy","","compound"),
+    mkEx("Hack Squat","5×10","","compound"),
+    mkEx("Leg Press","4×20 | 60s","High-rep pump.","compound"),
+    mkEx("Leg Curl","5×15","","iso"),
+    mkEx("Leg Extension","5×15","","iso"),
+    mkEx("Calf Raise","6×25","","iso"),
+    mkEx("Full Ab Circuit","4 rounds","","core"),
+  ],"<strong>PEAK LEG VOLUME:</strong> Highest volume leg session of the entire programme.","Highest leg volume of the programme."),
+  mkDay("FRIDAY","Push + Extended HIIT","⚡",95,[
+    mkEx("Incline DB Press","4×15 | 60s","","compound"),
+    mkEx("Flat DB Press","4×12 | 60s","","compound"),
+    mkEx("Arnold Press","4×12 | 60s","","compound"),
+    mkEx("Drop Set Fly + Lateral Raise","4×to failure each","","iso"),
+    mkEx("Tricep Tri-set","4 rounds","","iso"),
+    mkEx("EXTENDED HIIT","15 rounds: 20s / 40s","The most you'll do this programme.","cardio"),
+  ],"<strong>15-ROUND HIIT:</strong> Burns 400–500 kcal, keeps metabolic rate elevated up to 36 hours.","15-round HIIT. Maximum output."),
+  mkRest("SATURDAY","CARDIO #2 — 45 min","🏃","",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W19",theme:"STRENGTH — Peak",phase:5,phaseLabel:"PHASE 5: STRENGTH",days:[
+  mkDay("MONDAY","Push — Strength Peak","💪",100,[
+    mkEx("Barbell Bench Press","5×3 | PERSONAL RECORD ATTEMPT","19 weeks of building applied to this one set.","compound"),
+    mkEx("Incline Barbell Press","4×5 | heavy","","compound"),
+    mkEx("OHP","4×5 | near max","","compound"),
+    mkEx("Cable Work","4×15 all angles","","iso"),
+    mkEx("Weighted Dip","5×8 | +weight","","iso"),
+  ],"<strong>BENCH PRESS PR ATTEMPT:</strong> Tight setup, leg drive, arch, scapula retraction, full range, controlled descent.","Bench press personal record attempt."),
+  mkDay("TUESDAY","Pull — Deadlift PR","🔥",100,[
+    mkEx("Conventional Deadlift","Work up to 1-rep max | full warm-up","Test your absolute maximum.","compound"),
+    mkEx("Weighted Pull-Up","5×5 | +weight","","compound"),
+    mkEx("Barbell Row","4×8 | +weight","","compound"),
+    mkEx("All Back isolation","4×12 each: face pull, lat pulldown, cable row","","iso"),
+    mkEx("Barbell Curl","5×8 | heavy","","iso"),
+  ],"<strong>DEADLIFT 1-REP MAX TEST:</strong> Warm-up: 40%, 60%, 75%, 85%, 92%, 97%, max. Expect 120–180kg depending on start point.","Deadlift 1-rep max day."),
+  mkRest("WEDNESDAY","CARDIO — 45 min","🏃","",20),
+  mkDay("THURSDAY","Legs — Squat PR","🦵",105,[
+    mkEx("Barbell Squat","Work up to 1-rep max","Squat PR attempt.","compound"),
+    mkEx("Romanian Deadlift","4×10 | heavy","","compound"),
+    mkEx("Leg Press","5×20 | 60s","Volume after max attempt.","compound"),
+    mkEx("Leg Curl","5×12","","iso"),
+    mkEx("Calf Raise","6×20","","iso"),
+    mkEx("Ab Circuit","4 rounds | full","","core"),
+  ],"<strong>SQUAT 1-REP MAX:</strong> From bar-only in Week 2 to your current max — the most powerful visual evidence of 19 weeks of work.","Squat 1-rep max test."),
+  mkDay("FRIDAY","Volume + HIIT","⚡",95,[
+    mkEx("DB Bench Press","4×15 | 60s","Recovery volume.","compound"),
+    mkEx("DB Shoulder Press","4×15 | 60s","","compound"),
+    mkEx("Superset pump work","4 rounds of paired exercises","Fly+lateral, row+face pull.","iso"),
+    mkEx("HIIT Finisher","12 rounds: 30s / 30s","Back to 12 after max week.","cardio"),
+  ],"","Volume session after a heavy week."),
+  mkRest("SATURDAY","CARDIO #2 — 45 min","🏃","",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W20 🔄",theme:"DELOAD",phase:5,phaseLabel:"PHASE 5: STRENGTH",days:[
+  mkDay("MONDAY","Deload Push","🔄",30,[
+    mkEx("Bench Press","3×5 | 60%","","compound"),
+    mkEx("OHP","3×5 | 60%","","compound"),
+    mkEx("Cable work","2×12 | light","","iso"),
+  ],"<strong>DELOAD — 20 WEEKS:</strong> 5 months done. You've tested your maxes. Phase 6 is the final phase.","20 weeks complete. Rest and absorb."),
+  mkRest("TUESDAY","Walk / Yoga","🧘","",10),
+  mkDay("WEDNESDAY","Deload Pull","🔄",30,[
+    mkEx("Pull-Up","3×5 | easy","","compound"),
+    mkEx("Barbell Row","3×6 | 60%","","compound"),
+    mkEx("Face Pull","3×20","","iso"),
+  ],"",""),
+  mkRest("THURSDAY","LIGHT CARDIO — 30 min","🏃","Easy pace.",10),
+  mkDay("FRIDAY","Deload Legs","🔄",30,[
+    mkEx("Goblet Squat","3×10 | light","","compound"),
+    mkEx("Romanian Deadlift","3×8 | 60%","","compound"),
+    mkEx("Leg Curl","3×10 | 60%","","iso"),
+  ],"<strong>PHASE 6 BEGINS NEXT WEEK — ELITE CUT:</strong> 5 days/week. Refeed days. Final shred phase.","Phase 6 preview: 5-day split. Final shred."),
+  mkRest("SATURDAY","Easy Walk","🚶","",10),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+];
+// ── PHASE 6: ELITE CUT (Weeks 21–26) — GYM ──────────────────
+const p6gym=[
+{label:"W21",theme:"ELITE CUT — 5-Day",phase:6,phaseLabel:"PHASE 6: ELITE CUT",days:[
+  mkDay("MONDAY","Chest + Triceps","💪",105,[
+    mkEx("Barbell Bench Press","5×5 | maintain strength | 2 min","Strength maintained in deficit.","compound"),
+    mkEx("Incline Barbell Press","4×8 | 90s","","compound"),
+    mkEx("Incline DB Fly","4×12 | 45s","Definition work.","iso"),
+    mkEx("Cable Fly — low to high","4×15 | 45s","Upper chest definition.","iso"),
+    mkEx("Weighted Dip","4×10","","iso"),
+    mkEx("Tricep Pushdown — drop set","4×12 then drop","Drop weight at failure.","iso"),
+    mkEx("Overhead Tricep Extension","3×15","","iso"),
+  ],"<strong>PHASE 6 — FINAL CUT:</strong> 5 training days/week. Calories 2,300 training / 2,000 rest / 2,700 refeed (Wed). More isolation work for definition.","Phase 6. 5-day split. Chest + triceps."),
+  mkDay("TUESDAY","Back + Biceps","🔥",105,[
+    mkEx("Weighted Pull-Up","5×5 | max weight","Pull-up strength at peak.","compound"),
+    mkEx("Deadlift","4×4 | near max","Maintain strength.","compound"),
+    mkEx("T-Bar Row","4×8","","compound"),
+    mkEx("Lat Pulldown — slow eccentric","4×10 | 4-sec down","Maximum muscle damage.","compound"),
+    mkEx("Straight Arm Pulldown","4×15","Lat definition.","iso"),
+    mkEx("Barbell Curl","4×8 | heavy","","iso"),
+    mkEx("Concentration Curl","3×12 each","Peak bicep contraction.","iso"),
+  ],"","Back + biceps. Pull day 2.0."),
+  mkRest("WEDNESDAY","REFEED + CARDIO — 40 min","🔥","REFEED DAY: 2,700 kcal (mostly carbs). Extra 400–500 kcal of oats, rice, sweet potato, fruit. Resets leptin, prevents metabolic adaptation. Do 40 min moderate cardio.",25),
+  mkDay("THURSDAY","Legs — Definition","🦵",108,[
+    mkEx("Barbell Squat","5×5 | maintain max | 2.5 min","Strength maintenance in final cut.","compound"),
+    mkEx("Romanian Deadlift","4×10 | heavy","","compound"),
+    mkEx("Hack Squat","4×12","","compound"),
+    mkEx("Bulgarian Split Squat","3×12 each","","compound"),
+    mkEx("Leg Curl — slow eccentric","4×12 | 4-sec down","Hamstring detail.","iso"),
+    mkEx("Leg Extension","4×20 | 45s","Higher reps for definition.","iso"),
+    mkEx("Calf Raise","6×20","","iso"),
+    mkEx("Full Ab Circuit","4 rounds","","core"),
+  ],"","Leg definition session."),
+  mkDay("FRIDAY","Shoulders — Detail Day","💪",105,[
+    mkEx("Overhead Barbell Press","5×5 | heavy","Shoulder strength maintained.","compound"),
+    mkEx("DB Shoulder Press","4×12","","compound"),
+    mkEx("Lateral Raise — 4 angles","4×15 each angle","Complete shoulder development.","iso"),
+    mkEx("Face Pull","5×25","","iso"),
+    mkEx("Upright Row","3×12","Traps and side delts.","compound"),
+    mkEx("HIIT Finisher","12 rounds: 30s / 30s","","cardio"),
+  ],"<strong>SHOULDER DETAIL DAY:</strong> V-taper development creates the wide-narrow silhouette that changes how clothes fit.","Dedicated shoulder day."),
+  mkRest("SATURDAY","LISS CARDIO — 50 min","🏃","Longest cardio session of the programme.",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W22",theme:"ELITE CUT — Definition",phase:6,phaseLabel:"PHASE 6: ELITE CUT",days:[
+  mkDay("MONDAY","Chest + Triceps — Volume","💪",108,[
+    mkEx("Incline Barbell Press","5×8 | 90s","Volume focus.","compound"),
+    mkEx("Flat Barbell Press","4×10 | 90s","","compound"),
+    mkEx("DB Fly superset Cable Fly","4×12+12","No rest between.","iso"),
+    mkEx("Dip — weighted","4×10","","iso"),
+    mkEx("Tricep Giant Set","4 rounds: pushdown + overhead + kickback","","iso"),
+  ],"","Volume chest + triceps."),
+  mkDay("TUESDAY","Back + Biceps — Width","🔥",108,[
+    mkEx("Wide-Grip Pull-Up","5×8","Maximum back width.","compound"),
+    mkEx("Wide-Grip Lat Pulldown","4×12","","compound"),
+    mkEx("T-Bar Row","5×8 | +weight","","compound"),
+    mkEx("Cable Row — 3 grips","3×10 each","","iso"),
+    mkEx("Straight Arm Pulldown","4×15","","iso"),
+    mkEx("Spider Curl","4×12","Bicep peak development.","iso"),
+    mkEx("Hammer Curl","3×15","Brachialis.","iso"),
+  ],"","Back width and bicep peak."),
+  mkRest("WEDNESDAY","REFEED + CARDIO","🔥","2,700 kcal + 40 min cardio. Look fuller the next day.",25),
+  mkDay("THURSDAY","Legs — Intensity","🦵",112,[
+    mkEx("Barbell Squat","5×5 | heavy","","compound"),
+    mkEx("Deadlift","3×3 | very heavy","","compound"),
+    mkEx("Leg Press","5×25 | 45s","High-rep pump.","compound"),
+    mkEx("Bulgarian Split Squat","4×12 each | 60s","","compound"),
+    mkEx("Leg Curl Drop Set","4 to failure + drop","","iso"),
+    mkEx("Leg Extension Drop Set","4 to failure + drop","","iso"),
+    mkEx("Calf Raise","6×25","","iso"),
+    mkEx("Ab Circuit","4 complete rounds","","core"),
+  ],"","High intensity leg session."),
+  mkDay("FRIDAY","Shoulders + Arms","💪",108,[
+    mkEx("OHP","5×5 | heavy","","compound"),
+    mkEx("DB Shoulder Press","4×15 | 60s","","compound"),
+    mkEx("Lateral Raise — 5 sets","5×20 | 45s","","iso"),
+    mkEx("Rear Delt Fly","4×20","","iso"),
+    mkEx("21s Curl","4 sets","","iso"),
+    mkEx("Overhead Tricep Extension","4×15","","iso"),
+    mkEx("HIIT Finisher","12 rounds","","cardio"),
+  ],"","Shoulders and arms + HIIT."),
+  mkRest("SATURDAY","LISS — 50 min","🏃","",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W23",theme:"ELITE CUT — Shred",phase:6,phaseLabel:"PHASE 6: ELITE CUT",days:[
+  mkDay("MONDAY","Chest Focus","💪",110,[
+    mkEx("Barbell Bench Press","5×5 | maintain","","compound"),
+    mkEx("Incline DB Press","5×12 | 60s","","compound"),
+    mkEx("3-angle Cable Fly","4×15 each","","iso"),
+    mkEx("Pec Deck","4×20 | 45s","Peak contraction.","iso"),
+    mkEx("Tricep Circuit","4 rounds","","iso"),
+  ],"","Chest detail day."),
+  mkDay("TUESDAY","Back + Lats","🔥",110,[
+    mkEx("Weighted Pull-Up","5×5 | heavy","","compound"),
+    mkEx("Deadlift","4×4 | near max","","compound"),
+    mkEx("T-Bar Row","4×10","","compound"),
+    mkEx("Lat Pulldown — 3 grips","3×12 each","Width from every angle.","compound"),
+    mkEx("Face Pull","5×25","","iso"),
+    mkEx("Bicep Superset","4 rounds: barbell + DB","","iso"),
+  ],"","Back and lat detail."),
+  mkRest("WEDNESDAY","REFEED + CARDIO","🔥","2,700 kcal + 40 min cardio.",25),
+  mkDay("THURSDAY","Legs — Final Phase","🦵",115,[
+    mkEx("Barbell Squat","5×5 | heavy","","compound"),
+    mkEx("Romanian Deadlift","5×10 | heavy","","compound"),
+    mkEx("Hack Squat","5×12","","compound"),
+    mkEx("Leg Press","5×25 | 45s","High-rep leg press.","compound"),
+    mkEx("Leg Curl + Extension superset","5×12+15 | 45s","","iso"),
+    mkEx("Calf Raise","7×20","7 sets.","iso"),
+    mkEx("Full Ab Circuit","5 rounds","5 rounds — final phase.","core"),
+  ],"","Highest leg volume of Phase 6."),
+  mkDay("FRIDAY","Shoulders + Arms Isolation","💪",110,[
+    mkEx("OHP","5×5","","compound"),
+    mkEx("Complete Shoulder Circuit","5×15 all three heads","Front, side, rear.","iso"),
+    mkEx("Barbell Curl — heavy","5×8","","iso"),
+    mkEx("Incline DB Curl","4×12","Bicep peak.","iso"),
+    mkEx("Tricep Dip — max weighted","5×8","","iso"),
+    mkEx("Cable Pushdown — rope attachment","4×20","","iso"),
+    mkEx("HIIT Finisher","12 rounds","","cardio"),
+  ],"","Arm and shoulder definition work."),
+  mkRest("SATURDAY","LISS — 55 min","🏃","",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W24",theme:"ELITE CUT — Push",phase:6,phaseLabel:"PHASE 6: ELITE CUT",days:[
+  mkDay("MONDAY","Full Power Push","💪",112,[
+    mkEx("Barbell Bench Press","5×3 | near PR","Strength maintained through cut.","compound"),
+    mkEx("Incline Barbell Press","4×6 | heavy","","compound"),
+    mkEx("OHP","4×6 | heavy","","compound"),
+    mkEx("Cable Chest Circuit","4×15 all angles","","iso"),
+    mkEx("Shoulder Circuit","5×20 all heads","","iso"),
+    mkEx("Tricep Giant Set","4 rounds","","iso"),
+  ],"","Heavy push day in Phase 6."),
+  mkDay("TUESDAY","Full Power Pull","🔥",112,[
+    mkEx("Deadlift","Work up to 95% 1RM | 3 reps","Near-max deadlift.","compound"),
+    mkEx("Weighted Pull-Up","5×5 | +weight","","compound"),
+    mkEx("T-Bar Row","5×8 | +weight","","compound"),
+    mkEx("Lat Pulldown — full volume","4×12 each grip","","compound"),
+    mkEx("Rear Delt + Face Pull circuit","5 rounds","","iso"),
+    mkEx("Arm Giant Set","4 rounds: curl + hammer + 21s","","iso"),
+  ],"","Full power pull day."),
+  mkRest("WEDNESDAY","REFEED + CARDIO — 45 min","🔥","Refeed + longer cardio.",25),
+  mkDay("THURSDAY","Full Legs Power","🦵",118,[
+    mkEx("Barbell Squat","Work up to 95% 1RM | 2 reps","Near-max squat.","compound"),
+    mkEx("Romanian Deadlift","5×10 | +weight","","compound"),
+    mkEx("Hack Squat","4×15","","compound"),
+    mkEx("Leg Press","5×30 | 30s rest","High-rep monster set.","compound"),
+    mkEx("Leg Curl superset Leg Extension","5×12+15","","iso"),
+    mkEx("Calf Raise","7×25","","iso"),
+    mkEx("Ab Circuit","5 rounds","","core"),
+  ],"","Near-max leg session."),
+  mkDay("FRIDAY","Arms + Core Focus","💪",108,[
+    mkEx("Barbell Curl","5×8 | heavy","","iso"),
+    mkEx("Incline DB Curl","4×12","","iso"),
+    mkEx("Cable Curl","3×15 | slow eccentric","","iso"),
+    mkEx("21s","4 sets","","iso"),
+    mkEx("Tricep Pushdown","5×12","","iso"),
+    mkEx("Overhead Extension","4×12","","iso"),
+    mkEx("Dip — max weighted","4×8","","iso"),
+    mkEx("Extended Ab Circuit","5 rounds | all exercises","","core"),
+    mkEx("HIIT Finisher","12 rounds","","cardio"),
+  ],"","Dedicated arm + core day."),
+  mkRest("SATURDAY","LISS — 55 min","🏃","",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W25",theme:"ELITE CUT — Final Weeks",phase:6,phaseLabel:"PHASE 6: ELITE CUT",days:[
+  mkDay("MONDAY","Chest + Triceps — Final Volume","💪",115,[
+    mkEx("All chest exercises","5 sets each: barbell, incline, cable fly, DB fly","Total chest work.","compound"),
+    mkEx("All tricep exercises","4 sets each: pushdown, dip, overhead, kickback","Complete volume.","iso"),
+  ],"<strong>WEEK 25 — ONE WEEK FROM THE END:</strong> The body you've built over 6 months is right in front of you. Every rep counts.","Final weeks. Leave everything on the gym floor."),
+  mkDay("TUESDAY","Back + Biceps — Final Volume","🔥",115,[
+    mkEx("All back exercises","5 sets each: pull-up, deadlift, T-bar, lat pulldown, cable row","Complete back session.","compound"),
+    mkEx("All bicep exercises","4 sets each: barbell, DB, incline, cable, hammer","Complete bicep session.","iso"),
+  ],"","Full back and bicep session."),
+  mkRest("WEDNESDAY","REFEED + CARDIO — 45 min","🔥","Final refeed week. 2,700 kcal. 45 min cardio.",25),
+  mkDay("THURSDAY","Legs — Final Session","🦵",120,[
+    mkEx("All leg exercises","5 sets each: squat, deadlift, hack squat, leg press, lunge","Complete leg session.","compound"),
+    mkEx("All isolation","5 sets each: leg curl, extension, calf raise","","iso"),
+    mkEx("Core — 5 full rounds","All exercises","","core"),
+  ],"","Final dedicated leg session."),
+  mkDay("FRIDAY","Shoulders + All Isolation","💪",112,[
+    mkEx("OHP","5×5 | heavy","","compound"),
+    mkEx("All shoulder work","5 sets each direction","","iso"),
+    mkEx("Arm circuit","5 rounds: full arm workout","","iso"),
+    mkEx("HIIT Finisher","12 rounds","","cardio"),
+  ],"","Penultimate session."),
+  mkRest("SATURDAY","LISS — 60 min","🏃","The longest LISS session. Finish the week strong.",20),
+  mkRest("SUNDAY","Full Rest","😴"),
+]},
+{label:"W26 🏆",theme:"FINAL WEEK",phase:6,phaseLabel:"PHASE 6: ELITE CUT",days:[
+  mkDay("MONDAY","Final Push Session","💪",120,[
+    mkEx("Barbell Bench Press","5×5 | max weight you can control","Final bench press.","compound"),
+    mkEx("Incline Press + OHP","4×8 each","","compound"),
+    mkEx("Complete chest isolation","4×15 each angle","","iso"),
+    mkEx("Complete shoulder isolation","4×20 each direction","","iso"),
+    mkEx("Complete tricep circuit","4 rounds","","iso"),
+  ],"<strong>FINAL WEEK — 26 WEEKS:</strong> You started as a sedentary beginner at 209 lbs. You are finishing as someone who has trained consistently for 6 months. Take photos.","Final push session. 6 months comes down to this week."),
+  mkDay("TUESDAY","Final Pull Session","🔥",120,[
+    mkEx("Deadlift","Work up to max | attempt final 1RM","Your final deadlift max test.","compound"),
+    mkEx("Weighted Pull-Up","5×5 | heaviest ever","","compound"),
+    mkEx("Complete back circuit","Every exercise | 4 sets","","compound"),
+    mkEx("Complete bicep circuit","Every exercise | 4 sets","","iso"),
+  ],"<strong>FINAL DEADLIFT MAX:</strong> Compare to your Week 19 max. Record this number forever.","Final deadlift max test."),
+  mkRest("WEDNESDAY","REFEED + CARDIO — 45 min","🔥","Final refeed day. Celebrate everything you've done.",25),
+  mkDay("THURSDAY","Final Leg Session","🦵",120,[
+    mkEx("Barbell Squat","Work up to max | final 1RM test","Your final squat test.","compound"),
+    mkEx("Complete leg circuit","Every exercise | 5 sets each","","compound"),
+    mkEx("All isolation","5 sets each","","iso"),
+    mkEx("Core — 5 rounds","Final core session","","core"),
+  ],"<strong>FINAL SQUAT MAX:</strong> Compare to the bar-only from Week 2. Most people won't believe it started with just the empty bar.","Final squat max test."),
+  mkDay("FRIDAY","FINAL SESSION — All Out","🏆",150,[
+    mkEx("Choose your 3 favourite compound lifts","5 sets each | max weight","Go out on your terms.","compound"),
+    mkEx("Complete arm circuit","4 rounds","","iso"),
+    mkEx("Complete shoulder circuit","4 rounds","","iso"),
+    mkEx("FINAL HIIT","12 rounds | everything left in the tank","The last one.","cardio"),
+    mkEx("Final Core Circuit","5 rounds | all exercises","","core"),
+  ],"<strong>🏆 PROGRAMME COMPLETE:</strong> 26 weeks. 150+ sessions. You started as a sedentary beginner who had never touched a barbell. You're finishing as someone who lifts heavy, eats well, sleeps properly, and has built a physique and a lifestyle that's yours permanently.","THE FINAL SESSION. 26 weeks ends here."),
+  mkRest("SATURDAY","Active Recovery — Celebrate","🎉","Take progress photos. Compare to Week 1. Write down your final lifts. Plan your next programme.",20),
+  mkRest("SUNDAY","REST — YOU EARNED IT","🏆","Programme complete. Rest completely. You have earned this."),
+]},
+];
+
+const gymWeeks=[...p1gym,...p2gym,...p3gym,...p4gym,...p5gym,...p6gym];
+// ============================================================
+// HOME PROGRAMME — auto-derived from gym structure
+// ============================================================
+function hEx(name,detail,cue,tag){return{name,detail,cue,tag};}
+
+const homeWeeks=gymWeeks.map((w)=>{
+  const homeDays=w.days.map(day=>{
+    if(day.rest) return day;
+    const phase=w.phase, nm=day.name;
+    let homeEx=[];
+    if(phase<=2){
+      if(nm==="MONDAY"){
+        homeEx=[
+          hEx("Bodyweight Squat / Goblet Squat","3×"+(phase===1?"12":"15")+" | 60s rest","Sit between knees. Drive knees out.","compound"),
+          hEx("Push-Up (Regular or Weighted pack)","3×"+(phase===1?"12":"15")+" | 60s","Elbows 45°. Full range.","compound"),
+          hEx("Glute Bridge","3×"+(phase===1?"15":"20")+" | 60s","Drive through heels. 1-sec squeeze.","compound"),
+          hEx("Inverted Row (table)","3×"+(phase===1?"8":"12")+" | 60s","Under table. Pull chest to surface.","compound"),
+          hEx("Pike Push-Up","3×"+(phase===1?"8":"10")+" | 60s","Hips high. Lower head toward floor.","compound"),
+          hEx("Plank","3×"+(phase===1?"25":"40")+" sec","Squeeze everything.","core"),
+        ];
+      } else if(nm==="WEDNESDAY"){
+        homeEx=[
+          hEx("Romanian Deadlift (backpack)","3×"+(phase===1?"10":"12")+" | 60s","Hinge from hips.","compound"),
+          hEx("Reverse Lunge","3×"+(phase===1?"8":"10")+" each | 60s","Step back. Front heel drives you up.","compound"),
+          hEx("Towel Row","3×"+(phase===1?"10":"12")+" | 60s","Loop towel on door. Lean back.","compound"),
+          hEx("Superman","3×12 | 2-sec hold","Raise arms and legs. Hold.","compound"),
+          hEx("Dead Bug","3×8 each side","Press lower back into floor.","core"),
+        ];
+      } else if(nm==="FRIDAY"||nm==="THURSDAY"){
+        homeEx=[
+          hEx("Bulgarian Split Squat","3×"+(phase===1?"8":"10")+" each | 60s","Back foot on chair. Deep.","compound"),
+          hEx("Single-Leg Hip Thrust","3×"+(phase===1?"12":"15")+" each | 60s","One foot flat. Squeeze.","compound"),
+          hEx("Decline Push-Up","3×"+(phase===1?"10":"12")+" | 60s","Feet on chair.","compound"),
+          hEx("Towel Row","3×12 | 60s","Lean further back.","compound"),
+          hEx("Tricep Dip (chair)","3×10 | 60s","90° elbow bend.","iso"),
+          hEx("Mountain Climbers","3×20 | 30s","Drive knees alternately.","cardio"),
+          hEx("Bicycle Crunch","3×20","Slow. Touch elbow to knee.","core"),
+        ];
+      } else if(nm==="TUESDAY"){
+        homeEx=[
+          hEx("Jump Squat","4×15 | 45s","Explosive. Land soft.","compound"),
+          hEx("Weighted Push-Up (heavy pack)","4×10 | 60s","","compound"),
+          hEx("Nordic Curl (sofa)","3×5–8 | 90s","Anchor feet. Slow descent.","iso"),
+          hEx("Inverted Row elevated","4×12 | 60s","Feet on chair.","compound"),
+          hEx("LISS Finisher","15 min walk/jog","Right after session.","cardio"),
+        ];
+      } else {homeEx=day.exercises||[];}
+    } else if(phase===3){
+      if(nm==="MONDAY"||nm==="THURSDAY"){
+        homeEx=[
+          hEx("Weighted Push-Up (12–15kg pack)","4×"+(nm==="MONDAY"?"8":"12")+" | 90s","Full range. Slow eccentric.","compound"),
+          hEx("Pike Push-Up","4×"+(nm==="MONDAY"?"10":"12")+" | 60s","Head nearly to floor.","compound"),
+          hEx("Feet-Elevated Inverted Row","4×"+(nm==="MONDAY"?"10":"12")+" | 60s","Nearly horizontal.","compound"),
+          hEx("Towel Row — max lean","4×12 | 60s","As horizontal as possible.","compound"),
+          hEx("Tricep Dip — weighted","4×10 | 60s","Pack on lap.","iso"),
+          hEx("Bicep Curl (heavy)","3×12 | 45s","","iso"),
+          hEx("Lateral Raise (bottles)","4×20 | 45s","Heavy bottles.","iso"),
+          ...(nm==="THURSDAY"?[hEx("Superset pump work","3 rounds: any push + any pull","No rest between pairs.","iso")]:[]),
+        ];
+      } else if(nm==="TUESDAY"||nm==="FRIDAY"){
+        homeEx=[
+          hEx("Bulgarian Split Squat (heavy pack)","4×"+(nm==="TUESDAY"?"10":"12")+" each | 90s","","compound"),
+          hEx("Single-Leg Hip Thrust (loaded)","4×"+(nm==="TUESDAY"?"15":"20")+" each | 60s","","compound"),
+          hEx("Jump Squat","4×15 | 45s","","compound"),
+          hEx("Nordic Curl","3×6–10 | 90s","","iso"),
+          hEx("Wall Sit","3×60 sec","","iso"),
+          hEx("Single-Leg Calf Raise (stair)","5×15 each | 45s","","iso"),
+          ...(nm==="FRIDAY"?[
+            hEx("HIIT Finisher","10 rounds: burpee 20s / 40s rest","","cardio"),
+            hEx("Full Ab Circuit","3 rounds","","core"),
+          ]:[hEx("Mountain Climbers","4×25 each | 30s","","cardio")]),
+        ];
+      } else {homeEx=day.exercises||[];}
+    } else {
+      const dayType=nm==="MONDAY"?"push":nm==="TUESDAY"?"pull":nm==="THURSDAY"?"legs":nm==="FRIDAY"?"push2":"other";
+      if(dayType==="push"||dayType==="push2"){
+        homeEx=[
+          hEx("Weighted Push-Up (15–20kg pack)","5×8 | 90s","Heaviest pack. Full ROM.","compound"),
+          hEx("Archer Push-Up","4×8 each | 90s","Unilateral push.","compound"),
+          hEx("Pike Push-Up — deficit","4×12 | 60s","Hands on books.","compound"),
+          hEx("Tricep Dip — very heavy","4×10 | 60s","","iso"),
+          hEx("Pseudo Planche Lean","4×30 sec","Lean forward in plank.","compound"),
+          hEx("Lateral Raise (heaviest)","5×20 | 45s","","iso"),
+          ...(phase>=5?[hEx("HIIT Finisher","12 rounds","","cardio")]:[]),
+        ];
+      } else if(dayType==="pull"){
+        homeEx=[
+          hEx("Inverted Row — nearly horizontal","5×10 | 60s","","compound"),
+          hEx("Towel Row — full body weight","5×12 | 60s","","compound"),
+          hEx("Dead Hang + Scapula Pull","4×45 sec | pull-up bar","","compound"),
+          hEx("Superman Row with weight","4×12 | 3-sec hold","Hold a book at top.","compound"),
+          hEx("Bicep Curl (very heavy)","5×10 | 60s","","iso"),
+          hEx("Face Pull (resistance band/towel)","4×25","","iso"),
+        ];
+      } else if(dayType==="legs"){
+        homeEx=[
+          hEx("Bulgarian Split Squat (max weight)","5×12 each | 90s","","compound"),
+          hEx("Pistol Squat (assisted/full)","4×6 each | 90s","Hold wall if needed.","compound"),
+          hEx("Single-Leg Hip Thrust (max loaded)","4×20 each | 60s","","compound"),
+          hEx("Nordic Curl","4×8–12 | 90s","","iso"),
+          hEx("Jump Squat","4×20 | 45s","","compound"),
+          hEx("Single-Leg Calf Raise","6×20 each | 45s","","iso"),
+          hEx("Ab Circuit","4–5 rounds","","core"),
+          ...(phase>=5?[hEx("HIIT — Burpee Tabata","8 rounds: 20s/10s","","cardio")]:[]),
+        ];
+      } else {homeEx=day.exercises||[];}
+    }
+    return {...day, exercises:homeEx.length>0?homeEx:day.exercises};
+  });
+  return {...w,days:homeDays};
+});
+
+// ============================================================
+// ACHIEVEMENTS
+// ============================================================
+const achievements=[
+  {id:"first", icon:"⚡", name:"IGNITION",         desc:"Complete your first workout",            c:s=>s.w>=1},
+  {id:"w1",    icon:"📅", name:"SURVIVED WEEK 1",  desc:"Complete Week 1",                        c:s=>s.wk>=1},
+  {id:"s3",    icon:"🔥", name:"ON FIRE",           desc:"3-day workout streak",                   c:s=>s.st>=3},
+  {id:"w5",    icon:"💪", name:"IRON WILL",         desc:"5 workouts done",                        c:s=>s.w>=5},
+  {id:"wk2",   icon:"🗓️", name:"TWO WEEKS",         desc:"Week 2 complete",                        c:s=>s.wk>=2},
+  {id:"w10",   icon:"🏅", name:"DOUBLE DIGITS",     desc:"10 workouts done",                       c:s=>s.w>=10},
+  {id:"s5",    icon:"⚡", name:"UNSTOPPABLE",       desc:"5 workouts in a row",                    c:s=>s.st>=5},
+  {id:"wk4",   icon:"🥇", name:"PHASE 1 DONE",      desc:"4 weeks complete",                       c:s=>s.wk>=4},
+  {id:"xp5",   icon:"💎", name:"XP GRINDER",        desc:"500 total XP earned",                    c:s=>s.xp>=500},
+  {id:"w20",   icon:"🦅", name:"DEDICATED",         desc:"20 workouts done",                       c:s=>s.w>=20},
+  {id:"wk8",   icon:"👊", name:"2 MONTHS IN",       desc:"Phase 2 complete",                       c:s=>s.wk>=8},
+  {id:"xp10",  icon:"🌟", name:"XP 1000",           desc:"1,000 total XP",                         c:s=>s.xp>=1000},
+  {id:"wk12",  icon:"🔥", name:"SHRED SURVIVOR",    desc:"Phase 3 complete — 3 months done",       c:s=>s.wk>=12},
+  {id:"w30",   icon:"🏋️", name:"LIFTER",            desc:"30 workouts done",                       c:s=>s.w>=30},
+  {id:"s7",    icon:"⚡", name:"WEEK WARRIOR",      desc:"7 workouts in a row",                    c:s=>s.st>=7},
+  {id:"wk16",  icon:"💎", name:"INTERMEDIATE",      desc:"Phase 4 complete — 4 months done",       c:s=>s.wk>=16},
+  {id:"xp20",  icon:"🌠", name:"XP 2000",           desc:"2,000 total XP",                         c:s=>s.xp>=2000},
+  {id:"w50",   icon:"💪", name:"50 SESSIONS",       desc:"50 workouts completed",                  c:s=>s.w>=50},
+  {id:"wk20",  icon:"👑", name:"STRENGTH MASTER",   desc:"Phase 5 complete — 5 months done",       c:s=>s.wk>=20},
+  {id:"s10",   icon:"🔱", name:"TEN STREAK",        desc:"10 workouts in a row",                   c:s=>s.st>=10},
+  {id:"xp30",  icon:"💫", name:"XP 3000",           desc:"3,000 total XP",                         c:s=>s.xp>=3000},
+  {id:"w75",   icon:"🏆", name:"75 SESSIONS",       desc:"75 workouts done",                       c:s=>s.w>=75},
+  {id:"wk24",  icon:"🎯", name:"FINAL PHASE",       desc:"Week 24 reached",                        c:s=>s.wk>=24},
+  {id:"wk26",  icon:"🏆", name:"PROGRAMME LEGEND",  desc:"Complete the full 26-week programme",    c:s=>s.wk>=26},
+  {id:"xp50",  icon:"⭐", name:"XP 5000",           desc:"5,000 total XP — legendary dedication",  c:s=>s.xp>=5000},
+  {id:"w100",   icon:"💯", name:"100 SESSIONS",      desc:"100 workouts. Elite status.",             c:s=>s.w>=100},
+  {id:"row50",  icon:"🔁", name:"ROW ROOKIE",        desc:"50 lifetime inverted rows logged",       c:s=>s.dailyRowTotal>=50},
+  {id:"row250", icon:"🎯", name:"BACK BUILDER",      desc:"250 lifetime inverted rows logged",      c:s=>s.dailyRowTotal>=250},
+  {id:"row1000",icon:"🦾", name:"IRON SPINE",         desc:"1,000 lifetime inverted rows logged",    c:s=>s.dailyRowTotal>=1000},
+];
+
+const lvlTitles=["SEDENTARY STARTER","IRON INITIATE","BRONZE RECRUIT","SILVER FIGHTER","GOLD WARRIOR","PLATINUM BEAST","DIAMOND TITAN","ELITE OPERATOR","FORGE MASTER","UNDISPUTED LEGEND"];
+const lvlThresh=[0,150,350,600,950,1400,1950,2650,3500,4600,6000];
+
+// ── RANK SYSTEM: E (lowest) -> S (highest), derived from total XP ──
+const rankOrder=["E","D","C","B","A","S"];
+const rankThresh={E:0,D:400,C:1000,B:1900,A:3000,S:4600};
+const rankDesc={
+  E:"Every legend starts here. You've taken the first step — that's more than most people ever do.",
+  D:"The sedentary starter is gone. Consistency is starting to compound. Keep stacking sessions.",
+  C:"You've built real momentum. Strength numbers climbing, habits locking in. This is no longer a phase — it's who you are now.",
+  B:"Halfway to elite. Your body has fundamentally changed. People are noticing. You've earned the right to feel proud.",
+  A:"Approaching the top tier. Discipline, strength, and consistency at a level most never reach. The finish line is in sight.",
+  S:"THE HIGHEST RANK. You are the finished product of relentless, consistent effort. Undisputed. Legendary. This is mastery.",
+};
+function getRank(xp){
+  let r='E';
+  for(const key of rankOrder){ if(xp>=rankThresh[key]) r=key; }
+  return r;
+}
+
+// ============================================================
+// STATE + ENGINE
+// ============================================================
+let S=JSON.parse(localStorage.getItem('forge6m')||'null')||{mode:'gym',phase:0,week:0,done:{},xp:0,w:0,st:0,lastDate:null,ach:[],wk:0,rank:'E',loginStreak:0,lastLogin:null,loginDates:[],exDone:{},dailyRowDate:null,dailyRowCount:0,dailyRowTotal:0};
+// migrate older saves that predate rank/login tracking / per-exercise checkboxes / daily row builder
+if(S.rank===undefined)S.rank='E';
+if(S.loginStreak===undefined)S.loginStreak=0;
+if(S.lastLogin===undefined)S.lastLogin=null;
+if(S.loginDates===undefined)S.loginDates=[];
+if(S.exDone===undefined)S.exDone={};
+if(S.dailyRowDate===undefined)S.dailyRowDate=null;
+if(S.dailyRowCount===undefined)S.dailyRowCount=0;
+if(S.dailyRowTotal===undefined)S.dailyRowTotal=0; // lifetime total sets, never resets
+let storageWarningShown=false;
+function save(){
+  try{
+    localStorage.setItem('forge6m',JSON.stringify(S));
+  }catch(err){
+    if(!storageWarningShown){
+      storageWarningShown=true;
+      console.error('FORGE: could not save progress to localStorage:',err);
+      setTimeout(()=>{
+        alert('⚠️ Your progress could not be saved (storage may be full or disabled in this browser mode). Export a backup from the DATA tab as soon as possible to avoid losing progress.');
+      },500);
+    }
+  }
+}
+
+// ── EXPORT / IMPORT — manual cross-device transfer since progress lives in localStorage only ──
+function exportSave(){
+  const payload={forgeExportVersion:1,exportedAt:new Date().toISOString(),state:S};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`forge-save-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('SAVE EXPORTED','File downloaded','Keep it safe 💾');
+}
+
+function handleImportFile(event){
+  const file=event.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=(e)=>{
+    let parsed;
+    try{ parsed=JSON.parse(e.target.result); }
+    catch(err){
+      alert("That file isn't a valid FORGE save (couldn't parse JSON). No changes were made.");
+      event.target.value='';
+      return;
+    }
+    const incoming=parsed&&parsed.state?parsed.state:parsed;
+    if(!incoming||typeof incoming!=='object'||incoming.xp===undefined){
+      alert("That file doesn't look like a FORGE save (missing expected data). No changes were made.");
+      event.target.value='';
+      return;
+    }
+    const msg=`This will REPLACE your current progress (Level ${getLevel(S.xp)}, ${S.xp} XP, ${S.w} workouts) with the imported save (Level ${getLevel(incoming.xp)}, ${incoming.xp} XP, ${incoming.w||0} workouts).\n\nThis cannot be undone. Continue?`;
+    if(!confirm(msg)){ event.target.value=''; return; }
+    S=incoming;
+    if(S.rank===undefined)S.rank=getRank(S.xp);
+    if(S.loginStreak===undefined)S.loginStreak=0;
+    if(S.lastLogin===undefined)S.lastLogin=null;
+    if(S.loginDates===undefined)S.loginDates=[];
+    if(S.exDone===undefined)S.exDone={};
+    if(S.dailyRowDate===undefined)S.dailyRowDate=null;
+    if(S.dailyRowCount===undefined)S.dailyRowCount=0;
+    if(S.dailyRowTotal===undefined)S.dailyRowTotal=0;
+    save();
+    updateHUD();
+    renderPhaseStrip();renderWeekSel();renderWeek();
+    showToast('SAVE RESTORED!','Progress imported successfully',`Level ${getLevel(S.xp)} · ${S.xp} XP`);
+    event.target.value='';
+  };
+  reader.onerror=()=>{ alert('Could not read that file. No changes were made.'); event.target.value=''; };
+  reader.readAsText(file);
+}
+
+// ── PWA INSTALL PROMPT ──
+let deferredInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',(e)=>{ e.preventDefault(); deferredInstallPrompt=e; });
+window.addEventListener('appinstalled',()=>{
+  deferredInstallPrompt=null;
+  const desc=document.getElementById('installDesc');
+  const btn=document.getElementById('installBtn');
+  if(desc)desc.textContent='FORGE is installed! You can open it from your home screen any time — including with no internet connection.';
+  if(btn)btn.style.display='none';
+  showToast('APP INSTALLED!','FORGE is on your home screen','🎉');
+});
+function triggerInstall(){
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then(()=>{ deferredInstallPrompt=null; });
+    return;
+  }
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS){
+    alert('To install on iPhone/iPad:\n\n1. Tap the Share button (square with an arrow) in Safari\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add"\n\nFORGE will then open like a full app, including offline.');
+  } else {
+    alert("Your browser didn't offer an automatic install prompt. Look for an \"Install app\" option in your browser's menu (often the ⋮ or ⋯ icon), or check that you're not already using the installed version.");
+  }
+}
+function getWeeks(){return S.mode==='gym'?gymWeeks:homeWeeks;}
+
+// ── LOGIN STREAK — now requires explicit tap-to-confirm popup ──
+// checkLoginPrompt() runs on page load and decides whether to show the popup.
+// It does NOT mutate streak state — only confirmLogin() (user tap) does that.
+function checkLoginPrompt(){
+  const today=new Date().toDateString();
+  if(S.lastLogin===today){
+    // already confirmed today — just make sure HUD reflects current streak
+    return;
+  }
+  const yest=new Date(Date.now()-86400000).toDateString();
+  const projectedStreak = (S.lastLogin===yest) ? S.loginStreak+1 : 1;
+  const broken = S.lastLogin!==null && S.lastLogin!==yest;
+  document.getElementById('lgoStreak').textContent=projectedStreak;
+  document.getElementById('lgoTitle').textContent = broken ? "STREAK RESET — WELCOME BACK" : "DAILY CHECK-IN";
+  document.getElementById('lgoDesc').textContent = broken
+    ? "Your streak broke, but every legend has restarts. Tap in and build it back up."
+    : (projectedStreak>1 ? `Confirm today to make it ${projectedStreak} days in a row.` : "Tap below to confirm you're here today and start your streak.");
+  document.getElementById('lgo').classList.add('show');
+}
+
+function confirmLogin(){
+  const today=new Date().toDateString();
+  const yest=new Date(Date.now()-86400000).toDateString();
+  if(S.lastLogin===yest){ S.loginStreak++; }
+  else { S.loginStreak=1; }
+  S.lastLogin=today;
+  if(!S.loginDates.includes(today)){ S.loginDates.push(today); if(S.loginDates.length>365)S.loginDates.shift(); }
+  save();
+  document.getElementById('lgo').classList.remove('show');
+  updateHUD();
+  showToast('CHECKED IN!','Login streak updated',`🔥 ${S.loginStreak} DAY${S.loginStreak===1?'':'S'}`);
+}
+
+function getLevel(xp){for(let i=lvlThresh.length-1;i>=0;i--){if(xp>=lvlThresh[i])return i+1;}return 1;}
+function updateHUD(){
+  const xp=S.xp,lvl=getLevel(xp);
+  const c=lvlThresh[lvl-1]||0,n=lvlThresh[lvl]||(c+1000);
+  const pct=Math.min(100,((xp-c)/(n-c))*100);
+  document.getElementById('lvlNum').textContent=lvl;
+  document.getElementById('xpCur').textContent=xp-c;
+  document.getElementById('xpNeed').textContent=n-c;
+  document.getElementById('xpBar').style.width=pct+'%';
+  document.getElementById('stW').textContent=S.w;
+  document.getElementById('stS').textContent=S.st;
+  document.getElementById('stX').textContent=S.xp;
+  document.getElementById('stPh').textContent=S.wk;
+  // login streak display
+  const loginEl=document.getElementById('stLogin');
+  loginEl.innerHTML=S.loginStreak+'<span class="flame-icon">🔥</span>';
+  // rank badge display
+  const rank=getRank(S.xp);
+  const badge=document.getElementById('rankBadge');
+  badge.className='rank-badge rank-'+rank;
+  document.getElementById('rankLetter').textContent=rank;
+  renderDailyCard();
+}
+
+// ── DAILY BACK BUILDER — Inverted Rows, unlimited sets/day, resets at midnight ──
+// XP per set tapers off so it rewards consistency without being infinitely farmable:
+// sets 1-5 give full XP, sets 6-10 give half, sets 11+ give a small flat trickle.
+function dailyRowXpForSet(setNumber){
+  if(setNumber<=5)return 8;
+  if(setNumber<=10)return 4;
+  return 1;
+}
+function checkDailyRowReset(){
+  const today=new Date().toDateString();
+  if(S.dailyRowDate!==today){
+    S.dailyRowDate=today;
+    S.dailyRowCount=0;
+    save();
+  }
+}
+function logInvertedRow(){
+  checkDailyRowReset();
+  S.dailyRowCount++;
+  S.dailyRowTotal++;
+  const xpGain=dailyRowXpForSet(S.dailyRowCount);
+  const oldLvl=getLevel(S.xp);
+  const oldRank=getRank(S.xp);
+  S.xp+=xpGain;
+  save();
+  updateHUD();
+  checkAch();
+  const btn=document.querySelector('.daily-btn');
+  const rect=btn?btn.getBoundingClientRect():null;
+  const x=rect?rect.left+rect.width/2:window.innerWidth/2;
+  const y=rect?rect.top:window.innerHeight/2;
+  burstParticles(x,y,true);
+  showToast('SET LOGGED!',`Inverted Row #${S.dailyRowCount} today`,`+${xpGain} XP`);
+  const newLvl=getLevel(S.xp), newRank=getRank(S.xp);
+  if(newRank!==oldRank){ setTimeout(()=>showRankUp(newRank),1000); }
+  else if(newLvl>oldLvl){ setTimeout(()=>showLU(newLvl),1200); }
+}
+function renderDailyCard(){
+  checkDailyRowReset();
+  const countEl=document.getElementById('dailyCount');
+  const subEl=document.getElementById('dailySub');
+  if(!countEl)return; // card not in DOM yet on first paint
+  countEl.textContent=S.dailyRowCount;
+  if(S.dailyRowCount===0){
+    subEl.textContent='Log your first set of the day to start earning bonus XP.';
+  } else if(S.dailyRowCount<=5){
+    subEl.textContent=`${S.dailyRowCount} set${S.dailyRowCount===1?'':'s'} today · full XP through set 5`;
+  } else if(S.dailyRowCount<=10){
+    subEl.textContent=`${S.dailyRowCount} sets today · half XP kicks in past set 5`;
+  } else {
+    subEl.textContent=`${S.dailyRowCount} sets today — serious back day. Lifetime total: ${S.dailyRowTotal}`;
+  }
+}
+
+
+function showTab(t){
+  ['program','nutrition','overview','achievements','data'].forEach(id=>{document.getElementById('tab-'+id).classList.toggle('hidden',id!==t);});
+  document.querySelectorAll('.tab').forEach((el,i)=>{el.classList.toggle('active',['program','nutrition','overview','achievements','data'][i]===t);});
+  if(t==='achievements')renderAch();
+}
+
+function setMode(m){
+  S.mode=m;save();
+  document.getElementById('btnGym').classList.toggle('active',m==='gym');
+  document.getElementById('btnHome').classList.toggle('active',m==='home');
+  renderPhaseStrip();renderWeekSel();renderWeek();
+}
+
+const phaseNames=["P1: LEARN","P2: BUILD","P3: SHRED","P4: INTERMEDIATE","P5: STRENGTH","P6: ELITE CUT"];
+function renderPhaseStrip(){
+  const el=document.getElementById('phaseStrip');
+  el.innerHTML='';
+  [0,1,2,3,4,5].forEach(p=>{
+    const btn=document.createElement('button');
+    btn.className='ph-btn'+(S.phase===p?' active':'');
+    btn.textContent=phaseNames[p];
+    btn.onclick=()=>{S.phase=p;S.week=p*4;save();renderPhaseStrip();renderWeekSel();renderWeek();};
+    el.appendChild(btn);
+  });
+}
+
+function renderWeekSel(){
+  const weeks=getWeeks(),el=document.getElementById('weekSel');
+  el.innerHTML='';
+  const ph=S.phase;
+  const start=ph*4,end=Math.min(start+4,weeks.length);
+  for(let i=start;i<end;i++){
+    const w=weeks[i];
+    const btn=document.createElement('button');
+    btn.className='wb'+(S.week===i?' active':'');
+    btn.textContent=w.label;
+    btn.onclick=()=>{S.week=i;save();renderWeekSel();renderWeek();};
+    el.appendChild(btn);
+  }
+}
+
+function renderWeek(){
+  const weeks=getWeeks(),week=weeks[S.week];
+  const phEl=document.getElementById('phaseHeader');
+  phEl.innerHTML=`<div class="ph-header"><div class="ph-num">${week.phase}</div><div class="ph-info"><h3>${week.phaseLabel}</h3><p>${week.theme} — ${week.label}</p></div><div class="ph-badge"><span>WEEK</span><strong>${S.week+1} / 26</strong></div></div>`;
+  const grid=document.getElementById('weekGrid');
+  grid.innerHTML='';
+  week.days.forEach((day,di)=>{
+    const key=`${S.mode}_${S.week}_${di}`;
+    const done=!!S.done[key];
+    if(day.rest&&!day.exercises){
+      const rc=document.createElement('div');
+      rc.className='rc';
+      rc.innerHTML=`<div class="ri">${day.icon}</div><div class="rinfo"><h3>${day.name} — ${day.label}</h3><p>${day.notes||'Recovery day.'}</p></div>`;
+      grid.appendChild(rc);return;
+    }
+    const card=document.createElement('div');
+    card.className='dc'+(done?' done':'');
+    card.innerHTML=`
+      <div class="dh" onclick="toggleDay(this)">
+        <div class="dd">${day.icon}</div>
+        <div class="di"><h3>${day.name}</h3><p>${day.label}</p></div>
+        <span class="dxp">+${day.xp} XP</span>
+        <div class="ck${done?' done':''}" id="ck_${di}"></div>
+      </div>
+      <div class="db" id="db_${di}">
+        ${day.tip?`<div class="tip-box">💡 <strong>TIP:</strong> ${day.tip}</div>`:''}
+        ${renderEx(day,di)}
+        ${day.notes?`<div class="dnotes">📋 ${day.notes}</div>`:''}
+        <button class="cbtn${done?' done':''}">${done?'✓ SESSION COMPLETE':'CHECK OFF ALL EXERCISES TO COMPLETE'}</button>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderEx(day,dayIdx){
+  if(!day.exercises)return'';
+  const dayKey=`${S.mode}_${S.week}_${dayIdx}`;
+  const dayDone=!!S.done[dayKey];
+  return`<ul class="el">${day.exercises.map((ex,i)=>{
+    const demoId=`demo_${dayIdx}_${i}`;
+    const exKey=`${dayKey}_${i}`;
+    const checked=dayDone||!!S.exDone[exKey];
+    return`<li class="ei${checked?' exdone':''}">
+      <div class="ex-check${checked?' checked':''}" ${dayDone?'':`onclick="toggleExercise(${dayIdx},${i},event)"`}></div>
+      <span class="en">${String(i+1).padStart(2,'0')}</span>
+      <div class="einfo">
+        <div class="ename">${ex.name}</div>
+        <div class="edet">${ex.detail}</div>
+        ${ex.cue?`<div class="ecue">▸ ${ex.cue}</div>`:''}
+        <div class="demo-box" id="${demoId}">${getDemoSVG(ex.name)}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+        <span class="etag ${ex.tag}">${ex.tag.toUpperCase()}</span>
+        <button class="demo-toggle" onclick="toggleDemo('${demoId}',event)">▶ DEMO</button>
+      </div>
+    </li>`;
+  }).join('')}</ul>`;
+}
+
+function toggleDemo(id,e){
+  if(e)e.stopPropagation();
+  document.getElementById(id).classList.toggle('open');
+}
+
+function toggleDay(hdr){
+  const di=hdr.querySelector('[id^="ck_"]').id.split('_')[1];
+  document.getElementById('db_'+di).classList.toggle('open');
+}
+
+// ── PER-EXERCISE CHECKBOX — tap to check off a single exercise ──
+// When every exercise in a day is checked, the day auto-completes (XP/rank/streak logic fires).
+function toggleExercise(dayIdx,exIdx,e){
+  e.stopPropagation();
+  const dayKey=`${S.mode}_${S.week}_${dayIdx}`;
+  if(S.done[dayKey])return; // day already fully completed, no more toggling
+  const exKey=`${dayKey}_${exIdx}`;
+  const clickX=e.clientX, clickY=e.clientY;
+  if(S.exDone[exKey]){
+    delete S.exDone[exKey];
+  } else {
+    S.exDone[exKey]=true;
+    burstParticles(clickX,clickY,true); // small burst per exercise check
+  }
+  save();
+  const day=getWeeks()[S.week].days[dayIdx];
+  const allExChecked=day.exercises.every((ex,i)=>!!S.exDone[`${dayKey}_${i}`]);
+  renderWeek();
+  // re-open the day body after re-render so the user doesn't lose their place
+  const body=document.getElementById('db_'+dayIdx);
+  if(body)body.classList.add('open');
+  if(allExChecked){
+    setTimeout(()=>completeDayAuto(dayIdx,clickX,clickY),250);
+  }
+}
+
+// ── AUTO-COMPLETE — fires once all exercises in a day are checked ──
+function completeDayAuto(di,x,y){
+  const key=`${S.mode}_${S.week}_${di}`;
+  if(S.done[key])return;
+  const day=getWeeks()[S.week].days[di];
+  const oldLvl=getLevel(S.xp);
+  const oldRank=getRank(S.xp);
+  S.done[key]=true;S.xp+=day.xp;S.w++;
+  const today=new Date().toDateString(),yest=new Date(Date.now()-86400000).toDateString();
+  if(S.lastDate===today){}else if(S.lastDate===yest)S.st++;else S.st=1;
+  S.lastDate=today;
+  const wDays=getWeeks()[S.week].days;
+  const allDone=wDays.every((d,idx)=>{if(d.rest&&!d.exercises)return true;return!!S.done[`${S.mode}_${S.week}_${idx}`];});
+  if(allDone)S.wk=Math.max(S.wk,S.week+1);
+  save();updateHUD();checkAch();renderWeek();
+  burstParticles(x||window.innerWidth/2,y||window.innerHeight/2,false);
+  showToast('SESSION COMPLETE!',day.label,`+${day.xp} XP`);
+  const newLvl=getLevel(S.xp), newRank=getRank(S.xp);
+  if(newRank!==oldRank){
+    setTimeout(()=>showRankUp(newRank),1000);
+  } else if(newLvl>oldLvl){
+    setTimeout(()=>showLU(newLvl),1200);
+  }
+}
+
+// ── PARTICLE BURST — small burst per exercise check, bigger on full completion ──
+function burstParticles(x,y,small){
+  const layer=document.getElementById('particleLayer');
+  const colors=small?['#00f5a0','#00c8ff']:['#00f5a0','#00c8ff','#ffd700'];
+  const count=small?8:18;
+  const distBase=small?26:60, distRange=small?36:90;
+  const sizeBase=small?3:4, sizeRange=small?4:6;
+  for(let i=0;i<count;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const angle=(Math.PI*2*i)/count+Math.random()*0.4;
+    const dist=distBase+Math.random()*distRange;
+    const px=Math.cos(angle)*dist, py=Math.sin(angle)*dist;
+    const size=sizeBase+Math.random()*sizeRange;
+    p.style.left=x+'px';p.style.top=y+'px';
+    p.style.width=size+'px';p.style.height=size+'px';
+    p.style.background=colors[i%colors.length];
+    p.style.setProperty('--px',px+'px');
+    p.style.setProperty('--py',py+'px');
+    p.style.boxShadow='0 0 8px '+colors[i%colors.length];
+    layer.appendChild(p);
+    setTimeout(()=>p.remove(),950);
+  }
+}
+
+let tT;
+function showToast(title,msg,xp){
+  const t=document.getElementById('toast');
+  document.getElementById('tTitle').textContent=title;
+  document.getElementById('tMsg').textContent=msg;
+  document.getElementById('tXP').textContent=xp;
+  t.classList.add('show');clearTimeout(tT);
+  tT=setTimeout(()=>t.classList.remove('show'),3500);
+}
+function showLU(lvl){
+  document.getElementById('luN').textContent=lvl;
+  document.getElementById('luT').textContent=lvlTitles[Math.min(lvl-1,lvlTitles.length-1)];
+  document.getElementById('luo').classList.add('show');
+}
+function closeLU(){document.getElementById('luo').classList.remove('show');}
+
+// ── RANK-UP SPECTACLE — bigger reaction, reserved for E→D→C→B→A→S ──
+const rankUpTitles={D:"RISING FROM THE ASHES",C:"MOMENTUM UNLOCKED",B:"HALFWAY TO ELITE",A:"NEARING MASTERY",S:"ASCENSION COMPLETE"};
+function showRankUp(rank){
+  const box=document.getElementById('ruoBox');
+  box.className='ruo-box ruo-rank-'+rank;
+  document.getElementById('ruoTitle').textContent=rankUpTitles[rank]||"YOU HAVE ASCENDED";
+  document.getElementById('ruoRank').textContent=rank;
+  document.getElementById('ruoDesc').textContent=rankDesc[rank]||'';
+  document.getElementById('ruo').classList.add('show');
+  // big particle celebration across the whole screen
+  const colors={D:['#00c8ff','#00f5a0'],C:['#00f5a0','#00c8ff'],B:['#ffd700','#00f5a0'],A:['#ff8c00','#ffd700'],S:['#ff2d6e','#ffd700','#00f5a0']}[rank]||['#00f5a0'];
+  for(let burst=0;burst<3;burst++){
+    setTimeout(()=>{
+      const cx=window.innerWidth*(0.25+Math.random()*0.5);
+      const cy=window.innerHeight*(0.25+Math.random()*0.4);
+      burstParticlesColored(cx,cy,colors,28);
+    },burst*250);
+  }
+}
+function closeRankUp(){document.getElementById('ruo').classList.remove('show');}
+
+function burstParticlesColored(x,y,colors,count){
+  const layer=document.getElementById('particleLayer');
+  for(let i=0;i<count;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const angle=(Math.PI*2*i)/count+Math.random()*0.4;
+    const dist=80+Math.random()*140;
+    const px=Math.cos(angle)*dist, py=Math.sin(angle)*dist;
+    const size=5+Math.random()*8;
+    p.style.left=x+'px';p.style.top=y+'px';
+    p.style.width=size+'px';p.style.height=size+'px';
+    const col=colors[i%colors.length];
+    p.style.background=col;
+    p.style.setProperty('--px',px+'px');
+    p.style.setProperty('--py',py+'px');
+    p.style.boxShadow='0 0 10px '+col;
+    layer.appendChild(p);
+    setTimeout(()=>p.remove(),950);
+  }
+}
+
+function checkAch(){
+  achievements.forEach(a=>{
+    if(!S.ach.includes(a.id)&&a.c(S)){
+      S.ach.push(a.id);
+      setTimeout(()=>showToast('ACHIEVEMENT UNLOCKED!',a.name,a.desc),800);
+    }
+  });save();
+}
+function renderAch(){
+  document.getElementById('achGrid').innerHTML=achievements.map(a=>{
+    const u=S.ach.includes(a.id);
+    return`<div class="ach${u?' u':''}"><div class="ai">${a.icon}</div><h4>${a.name}</h4><p>${a.desc}</p></div>`;
+  }).join('');
+}
+
+// ── PWA: register service worker so the app shell works fully offline ──
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('./service-worker.js').catch(err=>{
+      console.warn('Service worker registration failed (app still works online):',err);
+    });
+  });
+}
+
+checkLoginPrompt();
+setMode(S.mode);updateHUD();
+
+</script>
+</body>
+</html>

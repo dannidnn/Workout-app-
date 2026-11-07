@@ -1,0 +1,25 @@
+{
+  "name": "FORGE — 6 Month Cut Programme",
+  "short_name": "FORGE",
+  "description": "26-week beginner cut and muscle-build programme with XP, ranks, and a daily back builder.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#060a14",
+  "theme_color": "#0a1428",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
